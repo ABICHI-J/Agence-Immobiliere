@@ -24,7 +24,9 @@ class AppFixtures extends Fixture
             $annonce->setTitle($faker->streetName() .$i);
             $annonce->setDescription($faker->text() .$i);
             $annonce->setImage($faker->image() .$i. 'jpg');
-            $annonce->setSlug($faker->slug() .$i);
+            $annonce->setSurface($faker->number() .$i. 'm2');
+            $annonce->setPrice($faker->image() .$i. '$');
+            $annonce->setAdress($faker->address() .$i);
             $annonce->setCreatedAt(new \DateTimeImmutable());
 
 
