@@ -3,14 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-<<<<<<< HEAD
         <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
 
-=======
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@0.5.3/dist/css/axentix.min.css">
-        {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('styles.css') }}">
->>>>>>> 0896553d2c1d86fc9653e1ae90a39401f2edfaa3
+  
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -20,13 +15,10 @@
     {% endblock %}
     </head>
     <body>
-<<<<<<< HEAD
+
         {% include 'partials/nav.html.twig'%}
         {% block body %}
         
-=======
-        {% block body %}
->>>>>>> 0896553d2c1d86fc9653e1ae90a39401f2edfaa3
         {% endblock %}
     </body>
 </html>
