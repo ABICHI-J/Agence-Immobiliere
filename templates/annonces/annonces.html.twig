@@ -12,16 +12,19 @@ Annonces ✅
   {# <h1>Tous les articles ({{ article|length }})</h1> #}
   <div class="row">
     {% for annonce in annonces %}
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card">
-          <img src="{{ annonce.image }}" class="card-img-top" alt="{{ annonce.title }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ annonce.title }}</h5>
-            <p class="card-text">{{ annonce.description }}</p>
-            <a href="{{ path('app_home', {slug: annonce.slug}) }}" class="btn btn-primary">Voir annonce</a>
-          </div>
+      <div class="annonces">
+    <div class="annonce">
+        <img src={{ annonce.image }} alt="Image annonce">
+        <div class="details">
+            <h2>{{ annonce.description }}</h2>
+            <p>{{ annonce.surface }}</p>
+            <p class='price'>{{ annonce.price }} € /mois</p>
+            <p>Disponible le: 15 avril 2023</p>
+            <a href="#">Voir l'annonce</a>
         </div>
-      </div>  
+    </div>
+    
+</div>
     {% endfor %}
   </div>
 
