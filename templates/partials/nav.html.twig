@@ -3,8 +3,8 @@
 		<div class="logo-nav">
 			<div class="name-img-logo">
 				<a href="home.html">
-					<img id="img-logo" src="" alt="IMAGE_LOGO">
-					<img id="title" src="" alt="NOM_SITE">
+					<img id="img-logo" src="/assets/images/maison.png" alt="IMAGE_LOGO">
+					<p id="title">NOM_ENTREPRISE</p>
 				</a>
 			</div>
 			<nav>
@@ -13,11 +13,7 @@
 						<a href="{{ path('app_home') }}">Accueil</a>
 					</li>
                     <li>
-<<<<<<< HEAD
-						<a href="{{path('app_annonces')}}">Annonces</a>
-=======
-						<a href="{{ path('app_annonces') }}">Annonces</a>
->>>>>>> 5c6b17159e5d3341a6688756aad07f95ba1665a7
+						<a href="{{ path('app_annonces') }}">Annonces</a> 
 					</li>
                     
                     {% if app.user is null %}

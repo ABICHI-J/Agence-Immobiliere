@@ -1,22 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-    <h1 style="text-align: center">S'inscrire ✅</h1>
+	<div class="form">
+		<h1>Créer une compte ✅</h1>
+		<div class="flex">
+			<p>Vous avez déjà un compte ?
+			</p>
+			<a href="{{ path('app_login') }}">Se connecter</a>
+		</div>
+		<div class="champs">
+			{{ form_start(registrationForm) }}
+			<div class="sec">
+				{{ form_row(registrationForm.lastname) }}
+				{{ form_row(registrationForm.firstname) }}
+			</div>
+			<div class="sec">
+				{{ form_row(registrationForm.email) }}
+				{{ form_row(registrationForm.plainPassword) }}
+			</div>
+			<div class="sec">
+				{{ form_row(registrationForm.phone) }}
+				{{ form_row(registrationForm.address) }}
+			</div>
+			<div class="sec">
+				{{ form_row(registrationForm.city) }}
+				{{ form_row(registrationForm.zipcode) }}
+			</div>
+			<div class="sec">
+				{{ form_row(registrationForm.country) }}
+			</div>
+			<div class="sec">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+			<div class="sec">
+				<button type="submit" class="btn">Créer un compte</button>
+			</div>
+			{{ form_end(registrationForm) }}
+		</div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.lastname) }}
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.phone) }}
-        {{ form_row(registrationForm.address) }}
-        {{ form_row(registrationForm.city) }}
-        {{ form_row(registrationForm.zipcode) }}
-        {{ form_row(registrationForm.country) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+	</div>
+
 {% endblock %}

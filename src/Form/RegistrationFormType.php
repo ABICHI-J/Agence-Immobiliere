@@ -54,7 +54,7 @@ class RegistrationFormType extends AbstractType
         ->add('city',TextType::class, [
             'label' => false,
             'attr' => [
-                'placeholder' => 'City'
+                'placeholder' => 'Ville'
             ] 
         ])
         ->add('zipcode',TextType::class, [
@@ -68,6 +68,7 @@ class RegistrationFormType extends AbstractType
             "preferred_choices" => ['FR']
         ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'J\'accepte les termes et conditions',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([

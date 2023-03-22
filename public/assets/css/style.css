@@ -1,9 +1,10 @@
 /*--------HEADER--------*/
-
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .header, header {  
     height: 10vh;
-    font-family: Arial, Helvetica, sans-serif;
   }
   header {
     box-shadow: 0px 2px 2px 0px rgb(177, 177, 177);
@@ -21,7 +22,7 @@
     align-items: center;
   }
   .name-img-logo {
-    width: 250px;
+    width: 220px;
     height: 60%;
     margin-left: 50px;
   }
@@ -34,14 +35,15 @@
     text-decoration: none;
   }
   #img-logo {
-    width: 30% ;
+    width: 20% ;
     height: 100%;
   }
   #title {
-    width: 65%;
+    width: 75%;
     height: 60%;
   }
   nav {
+    margin-left: 50px;
     overflow: hidden;
   }
   nav ul {
@@ -64,3 +66,65 @@
   }
 
 /*--------FOOTER--------*/
+
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgb(26, 63, 116);
+  color: rgb(215, 209, 209);
+  height: 25vh;
+}
+.social-media, .made-by, .separator {
+  width: 95%;
+  margin: auto;
+}
+.icons-social-media {
+  display: flex;
+}
+.icons, .social-media p{
+  margin: 14px 16px;
+}
+.separator {
+  height: 0.5px;
+  background-color: rgb(191, 188, 188);
+}
+.made-by  {
+  text-align: center;
+}
+.made-by p a {
+  color: red;
+    text-decoration: none;
+}
+
+/*--------INSCRIPTION--------*/
+
+
+.form {
+  background-color: aliceblue;
+  width: 30%;
+  padding: 20px;
+  margin: 100px auto ;
+  border: #000 1px solid;
+  border-radius: 10px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.flex p {
+  margin-right: 10px;
+}
+.sec{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+.btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: 100%;
+}
