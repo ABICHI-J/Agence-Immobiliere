@@ -1,12 +1,14 @@
 /*--------HEADER--------*/
 
+
 .header, header {  
-    height: 15vh;
+    height: 10vh;
     font-family: Arial, Helvetica, sans-serif;
   }
   header {
+    box-shadow: 0px 2px 2px 0px rgb(177, 177, 177);
     width: 100%;
-    background-color: rgb(218, 228, 228);
+    background-color: rgb(255, 255, 255);
     position: fixed;
     display: flex;
     z-index: 1;

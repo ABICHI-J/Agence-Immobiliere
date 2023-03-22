@@ -1,18 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Annonces !{% endblock %}
 
 {% block body %}
- {% include "partials/nav.html.twig" %}
-  {# {% include "partials/carousel.html.twig" %} #}
 
-
-
-<h1 class= 'text-center'>
-Welcome
+<h1 style="text-align: center">
+Annonces ✅
 </h1>
 
- {% block content %}
+
   {# <h1>Tous les articles ({{ article|length }})</h1> #}
   <div class="row">
     {% for annonce in annonces %}
@@ -22,12 +18,11 @@ Welcome
           <div class="card-body">
             <h5 class="card-title">{{ annonce.title }}</h5>
             <p class="card-text">{{ annonce.description }}</p>
-            <a href="{{ path('app_home', {slug: annonce.slug}) }}" class="btn btn-primary">Lire l'article</a>
+            <a href="{{ path('app_home', {slug: annonce.slug}) }}" class="btn btn-primary">Voir annonce</a>
           </div>
         </div>
       </div>  
     {% endfor %}
   </div>
-{% endblock %}
 
 {% endblock %}
