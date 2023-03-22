@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+    <h1>{{ annonce.title }}</h1>
+        <p>{{ annonce.image }}</p>
+
+    <p>{{ annonce.description }}</p>
+    <p>Price: {{ annonce.price }} $</p>
+    <p>Description: {{ annonce.description }}</p>
+    <p>Posted by: {{ annonce.user.username }}</p>
+{% endblock %}
+{% endblock %}

@@ -12,10 +12,10 @@ class AnnoncesController extends AbstractController
     #[Route('/annonces', name: 'app_annonces')]
     public function index(AnnoncesRepository $annoncesRepository): Response
     {
-        $annonces = $annoncesRepository->findAll();
+        $annonce = $annoncesRepository->findAll();
 
         return $this->render('annonces/annonces.html.twig', [
-            'annonces' => $annonces,
+            'annonces' => $annonce,
         ]);
     }
 }
