@@ -4,26 +4,18 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-<<<<<<< HEAD
-=======
 
   
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
->>>>>>> 892ea0e8f72fe808e0da9c0f3c67b5c15a3e0578
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
-<<<<<<< HEAD
         {% include 'partials/nav.html.twig' %}
-=======
-        {% include 'partials/nav.html.twig'%}
->>>>>>> 892ea0e8f72fe808e0da9c0f3c67b5c15a3e0578
-        {% block body %}
+    {% block body %}
         
         {% endblock %}
         {% include 'partials/footer.html.twig' %}

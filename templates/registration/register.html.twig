@@ -11,7 +11,7 @@
 			</p>
 			<a href="{{ path('app_login') }}">Se connecter</a>
 		</div>
-		<div class="champs">
+		<form class="form-register">
 			{{ form_start(registrationForm) }}
 			<div class="sec">
 				{{ form_row(registrationForm.lastname) }}
@@ -39,9 +39,7 @@
 				<button type="submit" class="btn">Créer un compte</button>
 			</div>
 			{{ form_end(registrationForm) }}
-		</div>
-
-
+		</form>
 	</div>
 
 {% endblock %}
