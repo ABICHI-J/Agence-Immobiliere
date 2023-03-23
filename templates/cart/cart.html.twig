@@ -5,27 +5,21 @@
 {% block body %}
 
 <h1 style="text-align: center">
-Annonces ✅
+Article ✅
 </h1>
 
-
-  {# <h1>Tous les articles ({{ article|length }})</h1> #}
   <div class="row">
-    {% for annonce in annonces %}
-      <div class="annonces">
-    <div class="annonce">
-        <img src={{ annonce.image }} alt="Image annonce">
-        <div class="details">
+      <div class="carts">
+        <div class="cart">
+          <img src={{ annonce.image }} alt="Image annonce">
+          <div class="infos">
             <h2>{{ annonce.description }}</h2>
             <p>{{ annonce.surface }}</p>
-            <p class='price'>{{ annonce.price }} € /mois</p>
+            <p class='prices'>{{ annonce.price }} € /mois</p>
             <p>Disponible le: 15 avril 2023</p>
             <a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
+          </div>
         </div>
-    </div>
-    
-</div>
-    {% endfor %}
+      </div>
   </div>
-
 {% endblock %}
