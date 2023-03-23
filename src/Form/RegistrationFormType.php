@@ -22,49 +22,28 @@ class RegistrationFormType extends AbstractType
     {
         $builder
         ->add('email',EmailType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Email'
-            ]
+            'label' => 'Email',
         ])
         ->add('firstname',TextType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Prenom'
-            ]
+            'label' => 'Prenom',
         ])
         ->add('lastname',TextType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Nom'
-            ] 
+            'label' => 'Nom', 
         ])
         ->add('phone',TelType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Telephone'
-            ] 
+            'label' => 'Téléphone', 
         ])
         ->add('address',TextType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Adresse'
-            ] 
+            'label' => 'Adresse', 
         ])
         ->add('city',TextType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Ville'
-            ] 
+            'label' => 'Ville', 
         ])
         ->add('zipcode',TextType::class, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Code Postal'
-            ] 
+            'label' => 'Code Postal', 
         ])
         ->add('country',CountryType::class, [
-            'label' => false,
+            'label' => 'Pays',
             "preferred_choices" => ['FR']
         ])
             ->add('agreeTerms', CheckboxType::class, [
@@ -80,8 +59,8 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'label' => false,
-                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Mot de passe'],
+                'label' => 'Mot de passe',
+                'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
