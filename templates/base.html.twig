@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-
         <link rel="stylesheet" href="/assets/css/style.css" type="text/css">       {% block javascripts %}
         {% endblock %}
     </head>
@@ -11,7 +10,7 @@
 
         {% include 'partials/nav.html.twig' %}
         {% block body %}
- 
+
         {% endblock %}
         {% include 'partials/footer.html.twig' %}
 

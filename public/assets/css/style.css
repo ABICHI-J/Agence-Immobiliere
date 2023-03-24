@@ -237,9 +237,8 @@ label {
   color: #333;
 }
 
-
 #inputEmail, #inputPassword {
-  padding: 10px;
+  padding: 10px 2px;
   border: none;
   border-radius: 5px;
   background-color: #fff;
@@ -368,13 +367,13 @@ textarea#contact_message {
 button.btn-contact {
   right: 0px;
   display: block;
-  width: 40%;
+  width: 17%;
   padding: 12px;
   border: none;
   border-radius: 5px;
   background-color: #0bda00;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   }
 
@@ -447,3 +446,51 @@ button.btn-contact:hover {
   font-size: 16px;
   font-weight: bold;
 }
+
+.promo-banners {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.promo-banner {
+  flex-basis: calc(33.33% - 20px);
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.promo-banner img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.promo-banner h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.promo-banner p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.promo-banner a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0088cc;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.promo-banner a:hover {
+  background-color: #005580;
+} 
