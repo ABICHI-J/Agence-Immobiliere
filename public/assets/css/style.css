@@ -75,6 +75,15 @@ footer{
   color: rgb(215, 209, 209);
   height: 25vh;
 }
+.container{
+  display: flex;
+}
+.text-social-media{
+  padding-left: 200px;
+}
+.text-social-media a{
+  color: red;
+} 
 .social-media, .made-by, .separator {
   width: 95%;
   margin: auto;
@@ -139,7 +148,10 @@ input[type="text"], input[type="tel"], input[type="email"] , input[type="passwor
   color: #555;
 }
 select{
-  width: 63%;
+  width: 62%;
+}
+input[type="checkbox"]{
+  margin-bottom: 30px;
 }
 /*-------Annonces-------*/
 .annonces {
@@ -198,8 +210,7 @@ select{
 /*-------Connexion-------*/
 .form-login {
   width: 400px;
-  margin: auto;
-  margin-top: 50px;
+  margin: 50px auto ;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -225,14 +236,8 @@ label {
   font-weight: bold;
   color: #333;
 }
-
-<<<<<<< HEAD
-input[type="email"], input[type="password"] {
-  padding: 10px 2px;
-=======
 #inputEmail, #inputPassword {
-  padding: 10px;
->>>>>>> cec690191c8dff0f54f266fb610acc19fa003d10
+  padding: 10px 2px;
   border: none;
   border-radius: 5px;
   background-color: #fff;
@@ -314,4 +319,59 @@ button[type="submit"] {
 }
 .cart a:hover {
   background-color: #1e1e3c;
+}
+
+/*--------HEADER--------*/
+
+.form-contact {
+  width: 80%;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f5f5f5;
+
+}
+.champs-left{
+  width: 30%;
+}
+.champs-right{
+  width: 67%;
+}
+.champs-contact, .champs-prenom-nom {
+  display: flex;
+  justify-content: space-between;
+}
+input#contact_firstname, input#contact_lastname, input#contact_email, input#contact_subject, textarea#contact_message {
+  padding: 15px 0px;
+  padding-left: 10px;
+}
+textarea#contact_message {
+  width: 98.5%;
+  height: 75%;
+  margin-bottom: 0px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px #ccc;
+  font-size: 16px;
+  color: #555;
+}
+.prenom-contact, .nom-contact{
+  width: 45%;
+}
+button.btn-contact {
+  right: 0px;
+  display: block;
+  width: 40%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0bda00;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  }
+
+button.btn-contact:hover {
+  background-color: #0aff00;
+  cursor: pointer;
 }

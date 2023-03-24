@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!
+{% endblock %}
+
+{% block body %}
+
+	<h1>Aide & contact ✅</h1>
+
+	{{ form_start(contactForm) }}
+	<div class="form-contact">
+		<h2>Contacter le service client</h2>
+		<p>Vous souhaitez obtenir plus d'informations sur une annonce ou demander une visite ?</p>
+		<p>Contactez l'agence ou le propriétaire via les coordonnées affcihées sur les pages annonces</p>
+		<p>Pour toute autre demande concernant le site internet</p>
+		<p>Utilisez le formulaire de contact suivant :</p>
+
+		<div class="champs-contact">
+			<div class="champs-left">
+				<div class="camp champs-prenom-nom">
+                    <div class="prenom-contact">
+                    {{ form_row(contactForm.firstname) }}
+                    </div>
+                    <div class="nom-contact">
+                    {{ form_row(contactForm.lastname) }}
+                    </div>
+				</div>
+				<div class="camp">
+					{{ form_row(contactForm.email) }}
+				</div>
+				<div class="camp">
+					{{ form_row(contactForm.subject) }}
+				</div>
+			</div>
+
+			<div class="champs-right">
+                {{ form_widget(contactForm.message) }}
+			</div>
+		</div>
+
+
+		<button type="submit" class="btn-contact">Envoyer mon message</button>
+        <p>( * ) Champs obligatoires.</p>
+		{{ form_end(contactForm) }}
+	</div>
+
+
+{% endblock %}

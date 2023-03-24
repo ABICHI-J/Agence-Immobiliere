@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,6 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -31,24 +34,63 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'Le prenom doit faire au moins 2 caractères',
+        maxMessage: 'Le prenom doit faire max 20 caractères',
+    )]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'Le nom doit faire au moins 2 caractères',
+        maxMessage: 'Le nom doit faire max 20 caractères',
+    )]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'L\'adresse doit faire au moins 2 caractères',
+        maxMessage: 'L\'adresse doit faire max 20 caractères',
+    )]
     private ?string $address = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'La ville doit faire au moins 2 caractères',
+        maxMessage: 'La ville doit faire max 20 caractères',
+    )]
     private ?string $city = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 5,
+        max: 5,
+    )]
+    #[Assert\Regex(
+        pattern: '/^[0-9]{5}$/',
+        message: 'Votre code postal doit être composé de 5 chiffres',
+    )]
     private ?string $zipcode = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $country = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
