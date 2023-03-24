@@ -236,14 +236,10 @@ label {
   font-weight: bold;
   color: #333;
 }
-<<<<<<< HEAD
-#inputEmail, #inputPassword {
-  padding: 10px 2px;
-=======
+
 
 #inputEmail, #inputPassword {
   padding: 10px;
->>>>>>> e7216748bbad17a8749ac07db1502e894acd554c
   border: none;
   border-radius: 5px;
   background-color: #fff;
@@ -332,8 +328,7 @@ button[type="submit"] {
   background-color: #1e1e3c;
 }
 
-<<<<<<< HEAD
-/*--------HEADER--------*/
+/*--------CONTACT--------*/
 
 .form-contact {
   width: 80%;
@@ -387,7 +382,6 @@ button.btn-contact:hover {
   background-color: #0aff00;
   cursor: pointer;
 }
-=======
 
 /*----------HOME----------*/
 
@@ -453,4 +447,3 @@ button.btn-contact:hover {
   font-size: 16px;
   font-weight: bold;
 }
->>>>>>> e7216748bbad17a8749ac07db1502e894acd554c
