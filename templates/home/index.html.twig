@@ -3,16 +3,32 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
-        
-     
+
+
+<h1 style="text-align: center">Accueil ✅</h1>
+	<div class="img-home">
+	
+	</div>
+	<main>
+  <div class="annonces-block">
+    <h2>Nos dernières annonces</h2>
+    <div class="annonces-list">
+      {% for annonce in annonces|slice(0, 4) %}
+        <div class="annonce">
+          <div class="annonce-image">
+            <img src="{{ annonce.image }}" alt="{{ annonce.description }}">
+          </div>
+          <div class="annonce-details">
+            <h3>{{ annonce.description }}</h3>
+            <p>{{ annonce.surface }}</p>
+            <p class="price">{{ annonce.price }} € / mois</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
 
 
 
-
-=======
-
-
->>>>>>> cec690191c8dff0f54f266fb610acc19fa003d10
-<h1 style="text-align: center">Accueil ✅</h1
 {% endblock %}

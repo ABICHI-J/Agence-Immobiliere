@@ -226,13 +226,8 @@ label {
   color: #333;
 }
 
-<<<<<<< HEAD
-input[type="email"], input[type="password"] {
-  padding: 10px 2px;
-=======
 #inputEmail, #inputPassword {
   padding: 10px;
->>>>>>> cec690191c8dff0f54f266fb610acc19fa003d10
   border: none;
   border-radius: 5px;
   background-color: #fff;
@@ -304,14 +299,85 @@ button[type="submit"] {
 }
 
 .cart a {
-  background-color: #3f51b5;
+  background-color: #0aff00;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s ease;
   margin-top: 20px; 
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  }
+
 .cart a:hover {
   background-color: #1e1e3c;
+}
+
+
+/*----------HOME----------*/
+
+
+.img-home{
+  width: 100%;
+  height: 500px;
+  background-image: url("/assets/images/building-home.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.annonces-block {
+  padding: 20px;
+  background-color: #f6f6f6;
+}
+
+.annonces-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.annonce {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: calc(25% - 15px);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.annonce-image {
+  flex: 0 0 40%;
+}
+
+.annonce-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.annonce-details {
+  flex: 0 0 60%;
+  padding: 10px;
+}
+
+.annonce h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.annonce p {
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.annonce .price {
+  font-size: 16px;
+  font-weight: bold;
 }
