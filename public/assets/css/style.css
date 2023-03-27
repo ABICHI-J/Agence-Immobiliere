@@ -237,15 +237,21 @@ button[type="submit"] {
 .banner-contact{
   background-image: url('/assets/images/contact-banner-tablet.png');
   height: 35vh;
+  display: flex;
+  align-items: center;
 }
-.titre-contact {
-  text-align: start;
-  font-weight: bold;
-}
+
 .info-banner{
   margin: auto;
   width: 80%;
   padding: 30px;
+
+}
+.titre-contact {
+  text-align: start;
+  font-weight: bold;
+  
+  color: black;
 }
 .sous-titre-contact, .p1, .p2{
   margin-bottom: 30px;
