@@ -547,3 +547,73 @@ button.btn-contact:hover {
 .promo-banner a:hover {
   background-color: #005580;
 } 
+
+
+/*--------CRUD--------*/
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+.table th {
+  text-align: left;
+  padding: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+
+.table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.actions a {
+  display: inline-block;
+  margin-right: 5px;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.actions .show {
+  background-color: #5cb85c;
+}
+
+.actions .edit {
+  background-color: #f0ad4e;
+}
+
+.actions .delete {
+  background-color: #d9534f;
+}
+
+.actions a:hover {
+  background-color: #333;
+}
+
+.create-btn {
+  display: block;
+  width: 100%;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.create-btn:hover {
+  background-color: #333;
+}
