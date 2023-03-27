@@ -17,7 +17,7 @@ class AnnoncesType extends AbstractType
             ->add('surface')
             ->add('price')
             ->add('address')
-            ->add('image')
+            ->add('image', )
             ->add('slug')
         ;
     }

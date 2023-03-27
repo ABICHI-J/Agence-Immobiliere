@@ -1,15 +1,17 @@
 /*--------HEADER--------*/
 *{
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .header, header {  
     height: 10vh;
   }
   header {
-    box-shadow: 0px 2px 2px 0px rgb(177, 177, 177);
+    /* box-shadow: 0px 2px 2px 0px rgb(177, 177, 177); */
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: #08192B;
     position: fixed;
     display: flex;
     z-index: 1;
@@ -38,54 +40,62 @@
     width: 20% ;
     height: 100%;
   }
-  #title {
-    width: 75%;
-    height: 60%;
-  }
   nav {
+    
     margin-left: 50px;
     overflow: hidden;
   }
   nav ul {
+    width: 75vw;
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: space-between;
   }
   nav li{
     margin: 14px 16px;
   }
   nav li:hover {
-    border-bottom: 5px solid #4CB;
+    border-bottom: 5px solid #0aff00;
     margin-bottom: 5px;
   }
   nav li a {
     text-align: center;
-    color: #000;
+    color: #BAC8D3;
     text-decoration: none;
+  }
+  
+  .liens-log-nav, .liens-nav{
+    display: flex;
   }
 
 /*--------FOOTER--------*/
 
 footer{
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: rgb(26, 63, 116);
-  color: rgb(215, 209, 209);
+  background-color: #08192B;
+  color: #BAC8D3;
   height: 25vh;
 }
 .container{
   display: flex;
 }
-.text-social-media{
+.contact{
   padding-left: 200px;
 }
-.text-social-media a{
-  color: red;
-} 
+.contact a{
+  color: #BAC8D3;
+  text-decoration: none;
+}
+.contact a:hover{
+  color:rgb(200, 167, 45);
+}  
 .social-media, .made-by, .separator {
-  width: 95%;
+  width: 100%;
   margin: auto;
 }
 .icons-social-media {
@@ -96,23 +106,36 @@ footer{
 }
 .separator {
   height: 0.5px;
-  background-color: rgb(191, 188, 188);
+  background-color: #BAC8D3;
 }
 .made-by  {
   text-align: center;
 }
 .made-by p a {
-  color: red;
-    text-decoration: none;
+
+  color:  #BAC8D3;
+  text-decoration: none;
 }
+.made-by p a:hover {
+
+  color:  rgb(200, 167, 45);
+}
+
 
 /*--------INSCRIPTION--------*/
 
-
+.page-register, .page-login{
+  padding: 50px 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/images/fond-register.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .form {
   width: 30%;
   padding: 30px;
-  margin: 50px auto ;
+  margin: auto ;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f5f5f5;
@@ -126,19 +149,60 @@ footer{
   margin-right: 10px;
 }
 .form-register {
-  width: 100%;
-  margin: auto;
   margin-top: 20px;
 }
 .sec{
-  width: 100%;
   display: flex;
   justify-content: space-between;
 }
-input[type="text"], input[type="tel"], input[type="email"] , input[type="password"], select{
+input#registration_form_lastname, input#registration_form_firstname, input#registration_form_email, input#registration_form_password, input#registration_form_phone, input#registration_form_address, input#registration_form_city, input#registration_form_zipcode, select#registration_form_country{
   display: block;
-  width: 100%  ;
   margin-bottom: 30px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px #ccc;
+  font-size: 16px;
+  color: #555;
+}
+select#registration_form_country{
+  width: 64%;
+}
+input[type="checkbox"]{
+  margin-bottom: 30px;
+}
+
+/*-------Connexion-------*/
+.form-login {
+  width: 30%;
+  margin: auto ;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: normal;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+#inputEmail, #inputPassword {
+  margin-bottom: 30px;
+  width: 100%;
   padding: 10px 0px;
   border: none;
   border-radius: 5px;
@@ -147,12 +211,116 @@ input[type="text"], input[type="tel"], input[type="email"] , input[type="passwor
   font-size: 16px;
   color: #555;
 }
-select{
-  width: 62%;
+
+#inputEmail:focus, #inputPassword:focus {
+  box-shadow: 0px 0px 5px #aaa;
 }
-input[type="checkbox"]{
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background-color: #0bda00;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0aff00;
+    cursor: pointer;
+  }
+/*--------CONTACT--------*/
+
+.banner-contact{
+  background-image: url('/assets/images/contact-banner-tablet.png');
+  height: 35vh;
+}
+.titre-contact {
+  text-align: start;
+  font-weight: bold;
+}
+.info-banner{
+  margin: auto;
+  width: 80%;
+  padding: 30px;
+}
+.sous-titre-contact, .p1, .p2{
   margin-bottom: 30px;
 }
+.bold{
+  font-weight: 700;
+}
+.icon-main{
+  height: 20px;
+  margin-right: 10px;
+}
+.form-contact {
+  line-height: 25px;
+  width: 80%;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+.champs-left{
+  width: 30%;
+}
+.champs-right{
+  width: 67%;
+}
+.champs-contact, .champs-prenom-nom {
+  display: flex;
+  justify-content: space-between;
+}
+input#contact_firstname, input#contact_lastname, input#contact_email, input#contact_subject, textarea#contact_message {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px #ccc;
+  font-size: 16px;
+  color: #555;
+}
+textarea#contact_message {
+  width: 99%;
+  height: 75%;
+  margin-bottom: 0px;
+  padding: 15px;
+  padding-right: 0px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px #ccc;
+  font-size: 16px;
+  color: #555;
+}
+.prenom-contact, .nom-contact{
+  width: 45%;
+}
+button.btn-contact {
+  display: block;
+  width: 17%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0bda00;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+
+  }
+
+button.btn-contact:hover {
+  background-color: #0aff00;
+  cursor: pointer;
+}
+
 /*-------Annonces-------*/
 .annonces {
   display: flex;
@@ -206,67 +374,6 @@ input[type="checkbox"]{
 .annonce a:hover {
   background-color: #E95A4E;
 }
-
-/*-------Connexion-------*/
-.form-login {
-  width: 400px;
-  margin: 50px auto ;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f5f5f5;
-}
-
-h1 {
-  text-align: center;
-  font-size: 36px;
-  font-weight: normal;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-label, #inputEmail, #inputPassword {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-label {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-}
-
-#inputEmail, #inputPassword {
-  padding: 10px 2px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px #ccc;
-  font-size: 16px;
-  color: #555;
-}
-
-#inputEmail:focus, #inputPassword:focus {
-  box-shadow: 0px 0px 5px #aaa;
-}
-
-button[type="submit"] {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  background-color: #0bda00;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #0aff00;
-    cursor: pointer;
-  }
 
 /*--------CART-------*/
 .carts {
@@ -327,60 +434,6 @@ button[type="submit"] {
   background-color: #1e1e3c;
 }
 
-/*--------CONTACT--------*/
-
-.form-contact {
-  width: 80%;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #f5f5f5;
-
-}
-.champs-left{
-  width: 30%;
-}
-.champs-right{
-  width: 67%;
-}
-.champs-contact, .champs-prenom-nom {
-  display: flex;
-  justify-content: space-between;
-}
-input#contact_firstname, input#contact_lastname, input#contact_email, input#contact_subject, textarea#contact_message {
-  padding: 15px 0px;
-  padding-left: 10px;
-}
-textarea#contact_message {
-  width: 98.5%;
-  height: 75%;
-  margin-bottom: 0px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0px 0px 5px #ccc;
-  font-size: 16px;
-  color: #555;
-}
-.prenom-contact, .nom-contact{
-  width: 45%;
-}
-button.btn-contact {
-  right: 0px;
-  display: block;
-  width: 17%;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  background-color: #0bda00;
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  }
-
-button.btn-contact:hover {
-  background-color: #0aff00;
-  cursor: pointer;
-}
 
 /*----------HOME----------*/
 
