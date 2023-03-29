@@ -9,7 +9,7 @@ use App\Entity\Annonces;
 use Cocur\Slugify\Slugify;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\DBAL\Types\BigIntType;
+// use Doctrine\DBAL\Types\BigIntType;
 
 class AppFixtures extends Fixture
 {
@@ -18,7 +18,7 @@ class AppFixtures extends Fixture
         
         $contacts = [];
         $users= [];
-        new BigIntType();
+        // new BigIntType();
         $faker = Faker\Factory::create();
         $slugify = new Slugify();
 
@@ -34,8 +34,8 @@ class AppFixtures extends Fixture
             $annonce->setAddress($faker->address());
             $annonce->setSlug($slugify->slugify($annonce->getTitle()));
             $annonce->setCreatedAt(new \DateTimeImmutable());
-            $annonce->setLatitude( bigInt());
-            $annonce->setLongitude( bigInt());
+            // $annonce->setLatitude( bigInt());
+            // $annonce->setLongitude( bigInt());
 
 
 
