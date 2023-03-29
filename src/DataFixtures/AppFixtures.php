@@ -18,6 +18,7 @@ class AppFixtures extends Fixture
         
         $contacts = [];
         $users= [];
+        new BigIntType();
         $faker = Faker\Factory::create();
         $slugify = new Slugify();
 
