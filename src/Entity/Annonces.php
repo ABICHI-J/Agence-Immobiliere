@@ -3,8 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\AnnoncesRepository;
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+=======
+use Doctrine\DBAL\Types\BigIntType;
+use Doctrine\DBAL\Types\Types;
+>>>>>>> 5cc488d141464723718c55e0e701822b3495651c
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnnoncesRepository::class)]
@@ -43,6 +48,7 @@ class Annonces
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+<<<<<<< HEAD
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favorites')]
     private Collection $users;
 
@@ -50,6 +56,17 @@ class Annonces
     {
         $this->users = new ArrayCollection();
     }
+=======
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
+    private ?string $latitude = null;
+
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
+    private ?string $longitude = null;
+
+    
+    
+  
+>>>>>>> 5cc488d141464723718c55e0e701822b3495651c
 
     
     public function getId(): ?int
@@ -163,6 +180,7 @@ class Annonces
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return Collection<int, User>
      */
@@ -177,18 +195,44 @@ class Annonces
             $this->users->add($user);
             $user->addFavorite($this);
         }
+=======
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?string $latitude): self
+    {
+        $this->latitude = $latitude;
+>>>>>>> 5cc488d141464723718c55e0e701822b3495651c
 
         return $this;
     }
 
+<<<<<<< HEAD
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
             $user->removeFavorite($this);
         }
+=======
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?string $longitude): self
+    {
+        $this->longitude = $longitude;
+>>>>>>> 5cc488d141464723718c55e0e701822b3495651c
 
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+    
+  
+>>>>>>> 5cc488d141464723718c55e0e701822b3495651c
    
 }

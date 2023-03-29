@@ -5,36 +5,72 @@
 
 {% block body %}
 
-	<h1 style="text-align: center">
-		Annonces ✅
-	</h1>
 
+<div style="background-color: #34495e; color: white; padding: 20px; text-align: center;">
+  <h1 style="font-size: 4rem;" "color: white;">Annonces</h1>
+  <p style="font-size: 1.5rem;">Trouvez votre logement idéal parmi nos {{annonces|length}} annonces</p>
+</div>
 
-	{# <h1>Tous les articles ({{ article|length }})</h1> #}
-	<div class="row">
-		{% for annonce in annonces %}
-			<div class="annonces">
-				<div class="annonce">
-					<a href=>Favoris</a>
-					<img src={{ annonce.image }} alt="Image annonce">
-					<div class="details">
-						<h2>{{ annonce.description }}</h2>
-						<p>{{ annonce.surface }}</p>
-						<p class='price'>{{ annonce.price }}
-							€ /mois</p>
-						<p>Disponible le: 15 avril 2023</p>
-						<a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
-					</div>
-				</div>
+<div class="body-annonce">
 
-			</div>
+<div class="row">
+  <div class="col-md-3">
+    <label for="order-select">Trier par:</label>
+    <select id="order-select">
+      <option value="price-asc">Prix croissant</option>
+      <option value="price-desc">Prix décroissant</option>
+      <option value="surface-asc">Surface croissante</option>
+      <option value="surface-desc">Surface décroissante</option>
+    </select>
+  </div>
+</div>
 
-      <form action="favoris.html.twig" method="post">
-                            <input type="hidden" name="id_produit" value="<?= $produit['id_produit'] ?>">
-                            <input type="hidden" name="prix" value="<?= $produit['prix'] ?>">
-                            <input type="submit" value="ajouter au panier" name="favoris">
-                        </form>
-		{% endfor %}
-	</div>
+<div class="row">
+  <div class="col-md-9">
+    <div class="row">
+      {% for annonce in annonces %}
+        <div class="col-md-4 annonces" data-price="{{ annonce.price }}" data-surface="{{ annonce.surface }}">
+          <div class="annonce">
+            <img src="{{ annonce.image }}" alt="Image annonce">
+            <div class="details">
+              <h2>{{ annonce.description }}</h2>
+              <p>{{ annonce.surface }}</p>
+              <p class='price'>{{ annonce.price }} € /mois</p>
+              <p>Disponible le: 15 avril 2023</p>
+              <a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% include 'partials/map.html.twig' %}
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  const annonces = document.querySelectorAll('.annonces');
+  const select = document.querySelector('#order-select');
+
+  select.addEventListener('change', function() {
+    const order = this.value.split('-');
+    const property = order[0];
+    const direction = order[1];
+
+    const sortedAnnonces = Array.from(annonces).sort(function(a, b) {
+      if (direction === 'asc') {
+        return parseInt(a.dataset[property]) - parseInt(b.dataset[property]);
+      } else {
+        return parseInt(b.dataset[property]) - parseInt(a.dataset[property]);
+      }
+    });
+
+    const container = document.querySelector('.row > .col-md-9 > .row');
+    container.innerHTML = '';
+    sortedAnnonces.forEach(function(annonce) {
+      container.appendChild(annonce);
+    });
+  });
+</script>
 
 {% endblock %}
