@@ -62,24 +62,15 @@ class AppFixtures extends Fixture
             $user->setCity($faker->city());
             $user->setZipcode($faker->postcode());
             $user->setCountry($faker->country());
+            $user->setImage($faker->imageUrl(360, 360, 'persons', true));
+
 
             $user->setCreatedAt(new \DateTimeImmutable());
-
-
-
-
-
-
-
 
             $manager->persist($user);
 
             $users[]= $user; 
-
-           
         }
-           
-
         
         $manager->flush();
     }

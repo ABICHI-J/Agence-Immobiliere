@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Annonces immobilières{% endblock %}
 
 {% block body %}
 <div class="page-login">
@@ -15,10 +15,15 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Se connecter ✅</h1>
-    <label for="inputEmail">Email</label>
+    <h1 class="titre-login h3 mb-3 font-weight-normal">Se connecter</h1>
+    <div class="flex redirection-inscription">
+			<p>Vous n'avez pas de compte ?
+			</p>
+			<p class="link-underline"><a href="{{ path('app_register') }}">Créer un compte</a></p>
+		</div>
+    <label for="inputEmail" class="labels">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword" class="labels">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"

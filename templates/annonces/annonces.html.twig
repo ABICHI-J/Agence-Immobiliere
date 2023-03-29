@@ -1,31 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonces !{% endblock %}
+{% block title %}Annonces immobilières
+{% endblock %}
 
 {% block body %}
 
-<h1 style="text-align: center">
-Annonces ✅
-</h1>
+	<h1 style="text-align: center">
+		Annonces ✅
+	</h1>
 
 
-  {# <h1>Tous les articles ({{ article|length }})</h1> #}
-  <div class="row">
-    {% for annonce in annonces %}
-      <div class="annonces">
-    <div class="annonce">
-        <img src={{ annonce.image }} alt="Image annonce">
-        <div class="details">
-            <h2>{{ annonce.description }}</h2>
-            <p>{{ annonce.surface }}</p>
-            <p class='price'>{{ annonce.price }} € /mois</p>
-            <p>Disponible le: 15 avril 2023</p>
-            <a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
-        </div>
-    </div>
-    
-</div>
-    {% endfor %}
-  </div>
+	{# <h1>Tous les articles ({{ article|length }})</h1> #}
+	<div class="row">
+		{% for annonce in annonces %}
+			<div class="annonces">
+				<div class="annonce">
+					<a href=>Favoris</a>
+					<img src={{ annonce.image }} alt="Image annonce">
+					<div class="details">
+						<h2>{{ annonce.description }}</h2>
+						<p>{{ annonce.surface }}</p>
+						<p class='price'>{{ annonce.price }}
+							€ /mois</p>
+						<p>Disponible le: 15 avril 2023</p>
+						<a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
+					</div>
+				</div>
+
+			</div>
+
+      <form action="favoris.html.twig" method="post">
+                            <input type="hidden" name="id_produit" value="<?= $produit['id_produit'] ?>">
+                            <input type="hidden" name="prix" value="<?= $produit['prix'] ?>">
+                            <input type="submit" value="ajouter au panier" name="favoris">
+                        </form>
+		{% endfor %}
+	</div>
 
 {% endblock %}

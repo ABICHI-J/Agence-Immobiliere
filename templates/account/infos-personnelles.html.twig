@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces immobilières
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-acc">
+		<p><a href="{{ path('app_gestion') }}"><img class="icon-fleche" src="/assets/images/fleche-fine-contour-vers-la-gauche.png" alt="icon flèche gauche">Retour</a></p>
+		<h1 class="titre-account">Mes informations personnelles</h1>
+		<div class="infos-perso">
+			<h2>Nom</h2>
+			<p>{{ app.user.lastname }} {{ app.user.firstname }}</p>
+		</div>
+		<div class="separator"></div>
+		<div class="infos-perso">
+			<h2>Téléphone</h2>
+			<p>{{ app.user.phone }}</p>
+		</div>
+		<div class="separator"></div>
+		<div class="infos-perso">
+			<h2>Adresse postale</h2>
+			<p>{{ app.user.address }}</p>
+		</div>
+		<div class="separator"></div>
+
+	</div>
+
+{% endblock %}
