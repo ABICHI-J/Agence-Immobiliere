@@ -9,9 +9,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
+                <th>Company</th>
                 <th>Price</th>
+                <th>Rooms</th>
+                <th>bedrooms</th>
+                <th>Surface</th>
+                <th>Floor</th>
                 <th>Address</th>
                 <th>Image</th>
                 <th>CreatedAt</th>
@@ -23,9 +26,12 @@
         {% for annonce in annonces %}
             <tr>
                 <td>{{ annonce.id }}</td>
-                <td>{{ annonce.title }}</td>
-                <td>{{ annonce.description }}</td>
-                <td>{{ annonce.price }}</td>
+                <td>{{ annonce.company }}</td>
+                <td>{{ annonce.price }} € / mois</td>
+                <td>{{ annonce.rooms }}</td>
+                <td>{{ annonce.bedrooms }}</td>
+                <td>{{ annonce.surface }} m²</td>
+                <td>{{ annonce.floor }}èmè</td>
                 <td>{{ annonce.address }}</td>
                 <td><img src="{{ asset( annonce.image) }}" width="100"></td>
                 <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>

@@ -14,15 +14,17 @@ class AnnoncesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('description', TextType::class)
+            ->add('company', TextType::class)
+            ->add('type', TextType::class)
+            ->add('price', TextType::class)            
+            ->add('rooms', TextType::class)
+            ->add('bedrooms', TextType::class)
             ->add('surface', TextType::class)
-            ->add('price', TextType::class)
+            ->add('floor', TextType::class)
             ->add('address', TextType::class)
             ->add('image', FileType::class,[
                 'data_class' => null,
             ])
-            ->add('slug', TextType::class)
         ;
     }
 

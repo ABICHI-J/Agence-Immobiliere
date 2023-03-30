@@ -21,6 +21,9 @@ class HomeController extends AbstractController
                 'id'=> $annonce->getId(),
                 'description' => $annonce->getDescription(),
                 'surface' => $annonce->getSurface(),
+                'address' => $annonce->getAddress(),
+                'type' => $annonce->getType(),
+                'company' => $annonce->getCompany(),
                 'price' => $annonce->getPrice(),
                 'image' => $annonce->getImage(),
             ];

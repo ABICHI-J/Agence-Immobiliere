@@ -118,9 +118,6 @@ footer{
   color: #BAC8D3;
   height: 25vh;
 }
-.container{
-  display: flex;
-}
 .contact{
   padding-left: 200px;
 }
@@ -645,13 +642,6 @@ button.btn-contact:hover {
   background-color: #005580;
   transform: translateY(-5px); 
   }
-  h2 {
-font-size: 30px;
-font-weight: bold;
-text-transform: uppercase;
-margin-bottom: 20px;
-animation: pulse 2s infinite; 
-}
 
 
 
@@ -742,7 +732,7 @@ animation: pulse 2s infinite;
 #annonces{
     text-align: center;
 }
-input#annonces_title, input#annonces_description, input#annonces_surface, input#annonces_price, input#annonces_address, input#annonces_slug{
+input#annonces_company, input#annonces_type, input#annonces_rooms, input#annonces_bedrooms, input#annonces_surface, input#annonces_price, input#annonces_floor, input#annonces_address{
   width: 90%;
   margin: auto;
   display: block;
