@@ -18,7 +18,11 @@
 				{% for annonce in annonces|slice(0, 4) %}
 					<div class="annonce">
 						<div class="annonce-image">
+						           <a href="{{ path('app_cart', {id: annonce.id}) }}" style="display:inline; text-decoration:none;">
+
 							<img src="{{ annonce.image }}" alt="{{ annonce.description }}">
+
+							</a>
 						</div>
 						<div class="annonce-details">
 							<h3>{{ annonce.description }}</h3>
@@ -29,8 +33,7 @@
 					</div>
 				{% endfor %}
 			</div>
-			<h2>Nos Actualités
-				<h2></div>
+			<h2>Nos Actualités<h2></div>
 				<div class="promo-banners">
 					<div class="promo-banner">
 						<img src="/assets/images/actu.jpg" alt="Actu banner 1">
