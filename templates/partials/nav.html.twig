@@ -14,7 +14,10 @@
 							<a href="{{ path('app_home') }}">Accueil</a>
 						</li>
 						<li>
-							<a href="{{ path('app_annonces') }}">Annonces</a>
+							<a href="{{ path('app_rent') }}">Louer</a>
+						</li>
+						<li>
+							<a href="{{ path('app_purchase') }}">Acheter</a>
 						</li>
 						{% if app.user is not null and app.user.roles[0] == "ROLE_ADMIN" %}
 							<li>

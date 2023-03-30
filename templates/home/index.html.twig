@@ -18,13 +18,15 @@
 				{% for annonce in annonces|slice(0, 4) %}
 					<div class="annonce">
 						<div class="annonce-image">
-							<img src="{{ annonce.image }}" alt="{{ annonce.description }}">
+							<img src="{{ annonce.image }}" alt="{{ annonce.company }}">
 						</div>
 						<div class="annonce-details">
-							<h3>{{ annonce.description }}</h3>
-							<p>{{ annonce.surface }}</p>
+							<h3>{{ annonce.company }}</h3>
+							<p>{{ annonce.type }}</p>						
 							<p class="price">{{ annonce.price }}
 								€ / mois</p>
+							<p>{{ annonce.address }}</p>
+							
 						</div>
 					</div>
 				{% endfor %}

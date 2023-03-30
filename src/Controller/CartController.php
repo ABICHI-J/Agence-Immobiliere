@@ -22,13 +22,17 @@ class CartController extends AbstractController
     public function show($id): Response
     {
         $annonce = $this->entityManager->getRepository(Annonces::class)->find($id);
-
        
         $annonceData = [
             'id' => $id,
-            'description' => $annonce->getDescription(),
+            'company' => $annonce->getCompany(),
+            'type' => $annonce->getType(),
+            'rooms' => $annonce->getRooms(),
+            'bedrooms' => $annonce->getBedrooms(),
+            'floor' => $annonce->getFloor(),
             'surface' => $annonce->getSurface(),
             'price' => $annonce->getPrice(),
+            'address' => $annonce->getAddress(),
             'image' => $annonce->getImage(),
         ];
 
