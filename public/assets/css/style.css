@@ -446,7 +446,7 @@ button.btn-contact:hover {
 /*--------CART-------*/
 .body-cart {
   
-    background: linear-gradient(45deg, #8ae4de, #8cd5eb, #a4e4d8, #96efea);
+    background: linear-gradient(45deg, #a3ede8, #8cd5eb, #a4e4d8, #96efea);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     }
@@ -565,6 +565,7 @@ button.btn-contact:hover {
 .annonce-image {
   flex: 0 0 40%;
 }
+
 
 .annonce-image img {
   display: block;
