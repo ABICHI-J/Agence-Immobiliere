@@ -18,14 +18,14 @@ class Annonces
     private ?string $company = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Type = null;
+    private ?string $type = null;
 
     #[ORM\Column(length: 255)]
 
     private ?string $surface = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $price = null;
+    private ?int $price = null;
 
     #[ORM\Column(length: 255)]
     private ?string $rooms = null;
@@ -73,19 +73,19 @@ class Annonces
 
         return $this;
     }
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     public function getType(): ?string
     {
-        return $this->Type;
+        return $this->type;
     }
 
-    public function setType(string $Type): self
+    public function setType(string $type): self
     {
-        $this->Type = $Type;
+        $this->type = $type;
 
         return $this;
     }
@@ -167,7 +167,7 @@ class Annonces
         return $this->price;
     }
 
-    public function setPrice(string $price): self
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 

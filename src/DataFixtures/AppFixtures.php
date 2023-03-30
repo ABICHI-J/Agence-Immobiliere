@@ -6,7 +6,6 @@ use Faker;
 use App\Entity\User;
 use App\Entity\Contact;
 use App\Entity\Annonces;
-use App\Entity\Purchase;
 use Cocur\Slugify\Slugify;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -43,27 +42,6 @@ class AppFixtures extends Fixture
             $manager->persist($annonce);
             $annonces[] = $annonce;
 
-
-
-            $purchase = new Purchase();
-            
-            $purchase->setCompany($faker->streetName());
-            $purchase->setImage($faker->imageUrl(360, 360, 'animals', true, 'cats'));
-            $purchase->setType($faker->streetName());
-            $purchase->setRooms($faker->randomNumber(1, true));
-            $purchase->setBedrooms($faker->randomNumber(1, true));
-            $purchase->setFloor($faker->randomNumber(1, true));
-            $purchase->setAddress($faker->address());
-            $purchase->setSurface($faker->randomNumber(3, false));
-            $purchase->setPrice($faker->randomNumber(4, true));
-            $purchase->setAddress($faker->address());
-            $purchase->setSlug($slugify->slugify($purchase->getCompany()));
-            $purchase->setCreatedAt(new \DateTimeImmutable());
-
-
-
-            $manager->persist($purchase);
-            $purchases[] = $purchase;
                
             // $contact = new Contact();
             // $contact->setFirstname($faker->firstName());

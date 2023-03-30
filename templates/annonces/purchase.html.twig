@@ -9,7 +9,7 @@
 	<div style="background-color: #34495e; color: white; padding: 20px; text-align: center;">
 		<h1 style="font-size: 4rem;" "color: white;">Acheter</h1>
 		<p style="font-size: 1.5rem;">Trouvez votre logement idéal parmi nos
-			{{purchases|length}}
+			{{annonces|length}}
 			annonces</p>
 	</div>
 
@@ -25,27 +25,28 @@
 		</select>
 
 
-		{% for purchase in purchases %}
-			<div class="col-md-4 annonces" data-price="{{ purchase.price }}" data-surface="{{ purchase.surface }}">
+		{% for annonce in annonces %}
+		 	
+			<div class="col-md-4 annonces" data-price="{{ annonce.price }}" data-surface="{{ annonce.surface }}">
 				<div class="annonce">
 					<div>
-						<h2>{{ purchase.company }}</h2>
-						<img src="{{ purchase.image }}" alt="Image annonce">
+						<h2>{{ annonce.company }}</h2>
+						<img src="{{ annonce.image }}" alt="Image annonce">
 					</div>
 					<div class="details">
-						<p class='price'>{{ purchase.price }} € /mois</p>
-            <p>{{ purchase.type }}</p>
-						<p>{{ purchase.rooms }}
+						<p class='price'>{{ annonce.price }} € /mois</p>
+            			<p>{{ annonce.type }}</p>
+						<p>{{ annonce.rooms }}
 							pièces |
-							{{ purchase.bedrooms }}
+							{{ annonce.bedrooms }}
 							chambres |
-							{{ purchase.surface }}
+							{{ annonce.surface }}
 							m² |
-							{{ purchase.floor }}ème étage</p>
+							{{ annonce.floor }}ème étage</p>
 
-						<p>{{ purchase.address }}</p>
+						<p>{{ annonce.address }}</p>
 						<p>Disponible le: 15 avril 2023</p>
-						<a href="{{ path('app_cart', {id: purchase.id}) }}">Voir l'annonce</a>
+						<a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
 					</div>
 				</div>
 			</div>

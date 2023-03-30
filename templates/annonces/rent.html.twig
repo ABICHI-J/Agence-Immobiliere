@@ -26,6 +26,7 @@
 
 
 		{% for annonce in annonces %}
+		 	
 			<div class="col-md-4 annonces" data-price="{{ annonce.price }}" data-surface="{{ annonce.surface }}">
 				<div class="annonce">
 					<div>
@@ -34,7 +35,7 @@
 					</div>
 					<div class="details">
 						<p class='price'>{{ annonce.price }} € /mois</p>
-            <p>{{ annonce.type }}</p>
+            			<p>{{ annonce.type }}</p>
 						<p>{{ annonce.rooms }}
 							pièces |
 							{{ annonce.bedrooms }}

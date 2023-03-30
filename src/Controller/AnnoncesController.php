@@ -19,7 +19,7 @@ class AnnoncesController extends AbstractController
         $sort = $request->query->get('sort');
         $order = $request->query->get('order');
 
-        $annonces = $annoncesRepository->findAll();
+        $annonces = $annoncesRepository->findBy(array('price' <= 5000));
 
         // Appliquez les filtres si nécessaire
         if ($surface) {
@@ -52,32 +52,33 @@ class AnnoncesController extends AbstractController
     }
 
     #[Route('/purchase', name: 'app_purchase')]
-    public function purchase(Request $request, PurchaseRepository $purchaseRepository)
+    public function purchase(Request $request, AnnoncesRepository $annoncesRepository)
     {
         $surface = $request->query->get('surface');
         $price = $request->query->get('prix');
         $sort = $request->query->get('sort');
         $order = $request->query->get('order');
 
-        $purchases = $purchaseRepository->findAll();
+        // $annonces = $annoncesRepository->filter('price' >= 10);
+        $annonces = $annoncesRepository->findAll();
 
         // Appliquez les filtres si nécessaire
         if ($surface) {
-            $purchases = array_filter($purchases, function($purchase) use ($surface) {
-                return $purchase->getSurface() <= $surface;
+            $annonces = array_filter($annonces, function($annonce) use ($surface) {
+                return $annonce->getSurface() <= $surface;
             });
         }
         if ($price) {
-            $purchases = array_filter($purchases, function($purchase) use ($price) {
-                return $purchase->getPrice() <= $price;
+            $annonces = array_filter($annonces, function($annonce) use ($price) {
+                return $annonce->getPrice() <= $price;
             });
         }
 
         // Trier les résultats si nécessaire
         if ($sort && $order) {
-            usort($purchases, function($purchaseA, $purchaseB) use ($sort, $order) {
-                $a = $purchaseA->$sort();
-                $b = $purchaseB->$sort();
+            usort($annonces, function($annonceA, $annonceB) use ($sort, $order) {
+                $a = $annonceA->$sort();
+                $b = $annonceB->$sort();
                 if ($order == 'asc') {
                     return ($a < $b) ? -1 : 1;
                 } else {
@@ -87,7 +88,7 @@ class AnnoncesController extends AbstractController
         }
 
         return $this->render('annonces/purchase.html.twig', [
-            'purchases' => $purchases,
+            'annonces' => $annonces,
         ]);
     }
 }
