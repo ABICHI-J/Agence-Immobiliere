@@ -19,7 +19,7 @@ class HomeController extends AbstractController
         foreach ($annonces as $annonce) {
             $annonceData[] = [
                 'id'=> $annonce->getId(),
-                'description' => $annonce->getDescription(),
+                'description' => $annonce->getCompany(),
                 'surface' => $annonce->getSurface(),
                 'address' => $annonce->getAddress(),
                 'type' => $annonce->getType(),

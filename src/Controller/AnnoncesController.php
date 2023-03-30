@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AnnoncesRepository;
 use App\Repository\PurchaseRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,14 +13,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AnnoncesController extends AbstractController
 {
     #[Route('/rent', name: 'app_rent')]
-    public function index(Request $request, AnnoncesRepository $annoncesRepository)
+    public function index(Request $request, AnnoncesRepository $annoncesRepository,EntityManagerInterface $entityManager)
     {
         $surface = $request->query->get('surface');
         $price = $request->query->get('prix');
         $sort = $request->query->get('sort');
         $order = $request->query->get('order');
 
-        // $annonces = $annoncesRepository->filter('price' >= 10);
+        // $em = $this->getEntityManager();
+        // $moins5k = $em->createQuery('SELECT * FROM Annonces WHERE price < 5000');
+        // $annonces = $moins5k->getResult();
         $annonces = $annoncesRepository->findAll();
 
         // Appliquez les filtres si nécessaire
