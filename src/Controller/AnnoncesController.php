@@ -19,7 +19,8 @@ class AnnoncesController extends AbstractController
         $sort = $request->query->get('sort');
         $order = $request->query->get('order');
 
-        $annonces = $annoncesRepository->findBy(array('price' <= 5000));
+        // $annonces = $annoncesRepository->filter('price' >= 10);
+        $annonces = $annoncesRepository->findAll();
 
         // Appliquez les filtres si nécessaire
         if ($surface) {
