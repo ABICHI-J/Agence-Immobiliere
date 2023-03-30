@@ -16,7 +16,9 @@
       {% for annonce in annonces|slice(0, 4) %}
         <div class="annonce">
           <div class="annonce-image">
+           <a href="{{ path('app_cart', {id: annonce.id}) }}" style="display:inline; text-decoration:none;">
             <img src="{{ annonce.image }}" alt="{{ annonce.description }}">
+            </a>
           </div>
           <div class="annonce-details">
             <h3>{{ annonce.description }}</h3>
