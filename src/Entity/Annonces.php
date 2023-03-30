@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnnoncesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\BigIntType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -43,15 +45,13 @@ class Annonces
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
     private ?string $latitude = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
     private ?string $longitude = null;
 
-    
-    
-  
 
     
     public function getId(): ?int
@@ -173,7 +173,6 @@ class Annonces
     public function setLatitude(?string $latitude): self
     {
         $this->latitude = $latitude;
-
         return $this;
     }
 
@@ -188,8 +187,4 @@ class Annonces
 
         return $this;
     }
-
-    
-  
-   
 }

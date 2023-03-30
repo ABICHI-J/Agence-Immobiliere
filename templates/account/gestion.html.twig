@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces immobilières{% endblock %}
+
+{% block body %}
+
+    <div class="container-acc">
+        <p><a href="{{ path('app_account') }}"><img class="icon-fleche" src="/assets/images/fleche-fine-contour-vers-la-gauche.png" alt="icon flèche gauche">Retour</a></p>
+		<h1 class="titre-account">Mon compte</h1>
+		<div class="flex container-2div-acc">
+			<a  class="flex center-vertical containers-acc left-acc" href="{{ path('app_infos-personnelles') }}">
+				<div>
+					<img class="icons-acc" src="/assets/images/user-interface.png" alt="icon-coeur">
+				</div>
+				<div class="flex-center-vertical">
+					<h2>Mes informations personnelles</h2>
+				</div>
+			</a>
+			<a class="flex center-vertical containers-acc right-acc" href="{{ path('app_identifiants') }}">
+				<div>
+					<img class="icons-acc" src="/assets/images/cadenas.png" alt="icon-user">
+				</div>
+				<div class="flex-center-vertical">
+					<h2>Mes identifiants</h2>
+				</div>
+			</a>
+		</div>
+        <p class="text-center besoin-sup-account">Besoin de supprimer votre compte ?</p>
+        <p class="text-center send-message-account link-underline"><a href="{{ path('app_contact') }}">Envoyer un message</a></p>
+	</div>
+
+{% endblock %}

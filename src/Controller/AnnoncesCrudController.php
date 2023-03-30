@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Annonces;
 use App\Form\AnnoncesType;
 use App\Repository\AnnoncesRepository;
+use App\Services\UploadFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,14 +23,17 @@ class AnnoncesCrudController extends AbstractController
     }
 
     #[Route('/new', name: 'app_annonces_crud_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AnnoncesRepository $annoncesRepository): Response
+    public function new(Request $request, AnnoncesRepository $annoncesRepository,UploadFile $uploadFile): Response
     {
         $annonce = new Annonces();
         $form = $this->createForm(AnnoncesType::class, $annonce);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
+            $image = $form->get('image')->getData();
+            $annonce->setImage($uploadFile->moveFile($image));
+
             $annonce->setCreatedAt(new \DateTimeImmutable('Europe/Paris'));
             $annoncesRepository->save($annonce, true);
 
@@ -51,12 +55,18 @@ class AnnoncesCrudController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_annonces_crud_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Annonces $annonce, AnnoncesRepository $annoncesRepository): Response
+    public function edit(Request $request, Annonces $annonce, AnnoncesRepository $annoncesRepository,UploadFile $uploadFile): Response
     {
+        // dd($annonce);
         $form = $this->createForm(AnnoncesType::class, $annonce);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('image')->getData();
+            $annonce->setImage($uploadFile->moveFile($image));
+
             $annonce->setUpdatedAt(new \DateTimeImmutable());
             $annoncesRepository->save($annonce, true);
 

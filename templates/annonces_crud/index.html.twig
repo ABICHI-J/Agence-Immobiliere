@@ -31,8 +31,9 @@
                 <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ annonce.updatedAt ? annonce.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td class="actions">
-                    <a href="{{ path('app_annonces_crud_show', {'id': annonce.id}) }}" class="show"><i class="fa fa-eye"></i> Show</a>
-                    <a href="{{ path('app_annonces_crud_edit', {'id': annonce.id}) }}" class="edit"><i class="fa fa-pencil"></i> Edit</a>
+                    <a href="{{ path('app_annonces_crud_edit', {'id': annonce.id}) }}" class="edit"> Editer</a>
+                    
+                    {{ include('annonces_crud/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -43,5 +44,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_annonces_crud_new') }}" class="create-btn"><i class="fa fa-plus"></i> Create new</a>
 {% endblock %}

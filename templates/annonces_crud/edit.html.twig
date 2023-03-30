@@ -3,11 +3,10 @@
 {% block title %}Edit Annonces{% endblock %}
 
 {% block body %}
+<div class="container-edit-new-crud">
     <h1>Edit Annonces</h1>
 
-    {{ include('annonces_crud/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('annonces_crud/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('app_annonces_crud_index') }}">back to list</a>
-
-    {{ include('annonces_crud/_delete_form.html.twig') }}
+</div>
 {% endblock %}
