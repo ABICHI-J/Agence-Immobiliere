@@ -15,7 +15,7 @@ class UploadFile extends AbstractController{
 
         $file->move($this->getParameter('upload_dir'),$fileName);
 
-        return 'assets/images/'.$fileName;
+        return ''.$fileName;
     }
 }
 

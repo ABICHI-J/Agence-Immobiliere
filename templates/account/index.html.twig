@@ -5,11 +5,12 @@
 
 {% block body %}
 	<div class="container-acc">
-		<h1 class="titre-account">Mon compte
+<h1 class="titre-account ta-s">Mon compte
+
 		</h1>
 		<p class="email-account">{{app.user.email}}</p>
-		<div class="flex container-2div-acc">
-			<a  class="flex center-vertical containers-acc left-acc" href="{{ path('app_favoris') }}">
+		<div class="flex-jc-sb container-2div-acc">
+			<a  class="flex flex-ai-c containers-acc left-acc" href={{ path('app_favoris') }}>
 				<div>
 					<img class="icons-acc" src="/assets/images/coeur.png" alt="icon-coeur">
 				</div>
@@ -18,7 +19,7 @@
 					<p>Biens immobiliers enregistrés</p>
 				</div>
 			</a>
-			<a class="flex center-vertical containers-acc right-acc" href="{{ path('app_gestion') }}">
+			<a class="flex flex-ai-c containers-acc right-acc" href={{ path('app_gestion') }}>
 				<div>
 					<img class="icons-acc" src="/assets/images/avatar-de-profil.png" alt="icon-user">
 				</div>
@@ -28,8 +29,8 @@
 				</div>
 			</a>
 		</div>
-		<p class=" text-center deconnexion-acc link-underline">
-			<a href="{{ path('app_logout') }}">Se déconnecter</a>
+		<p class="ta-c deconnexion-acc link-underline">
+			<a href={{ path('app_logout') }}>Se déconnecter</a>
 		</p>
 	</div>
 

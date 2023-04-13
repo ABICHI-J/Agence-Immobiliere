@@ -25,18 +25,25 @@ class CartController extends AbstractController
        
         $annonceData = [
             'id' => $id,
-            'company' => $annonce->getCompany(),
+            'agency' => $annonce->getAgency(),
             'type' => $annonce->getType(),
+            'furnished' => $annonce->getFurnished(),
             'rooms' => $annonce->getRooms(),
             'bedrooms' => $annonce->getBedrooms(),
+            'lift' => $annonce->getLift(),
+            'balcony' => $annonce->getBalcony(),
+            'patio' => $annonce->getPatio(),
             'floor' => $annonce->getFloor(),
             'surface' => $annonce->getSurface(),
             'price' => $annonce->getPrice(),
             'address' => $annonce->getAddress(),
             'image' => $annonce->getImage(),
+            'description' => $annonce->getDescription(),
+            
         ];
 
         return $this->render('cart/cart.html.twig', [
+            
             'annonce' => $annonceData,
         ]);
     }

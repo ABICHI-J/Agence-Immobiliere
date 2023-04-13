@@ -1,37 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonces immobilières{% endblock %}
+{% block title %}Annonces immobilières
+{% endblock %}
 
 {% block body %}
-<div class="body-cart">
-<h1 style="text-align: center">
-Article ✅
-</h1>
+	<div class="body-cart">
 
-  <div class="row">
-      <div class="carts">
-        <div class="cart">
-          <img src={{ annonce.image }} alt="Image annonce">
-          <div class="infos">
-            <h2>{{ annonce.company }}</h2>
-            <p>{{ annonce.type }}</p>
-						<p class='price'>{{ annonce.price }}
-							€ /mois</p>
-						<p>{{ annonce.rooms }}
-							pièces |
-							{{ annonce.bedrooms }}
-							chambres |
-							{{ annonce.surface }}
-							m² |
-							{{ annonce.floor }}ème étage</p>
+		<div class="cart">
+			<img src="assets/images/{{ annonce.image }}" alt="Image annonce"/>
+			<div class="flex-jc-sb mb-40">
+				<div>
+					<div class="bold fs-24 mb-5">
 
-						<p>{{ annonce.address }}</p>
-						<p>Disponible le: 15 avril 2023</p>
-          </div>
-        </div>
-      </div>
+						{{ annonce.type }}
 
-  </div>
-  </div>
+						{% if annonce.furnished  %}
+							meublé
+						{% else %}
+							non meublé
+						{% endif %}
+
+
+						à louer</div>
+					<div class="fs-18 mb-25">
+
+						{{ annonce.rooms }}
+						pièces •
+						{{ annonce.bedrooms }}
+						chambres •
+						{{annonce.surface }}
+						m² • Étage
+						{{ annonce.floor }}
+
+					</div>
+					<div>{{ annonce.address }}</div>
+
+				</div>
+				<div class="price fs-24">{{ annonce.price }}
+
+					€
+				</div>
+			</div>
+			<div class="mb-40">
+
+				<h2>Description du professionnel</h2>
+				<p>
+					{{ annonce.description}}
+				</p>
+			</div>
+			<div class="mb-40">
+
+				<h2>Caractéristiques</h2>
+				<p>
+					{% if annonce.lift %}
+						<p>Ascenseur</p>
+					{% endif %}
+
+
+					{% if annonce.balcony %}
+						<p>Balcon</p>
+					{% endif %}
+
+
+					{% if annonce.patio %}
+						<p>Terrase</p>
+					{% endif %}
+
+
+				</p>
+			</div>
+			<div class="mb-40">
+
+				<h2>À propos du prix</h2>
+
+				<p>
+					{{ annonce.price }}
+					€ /mois
+
+				</p>
+			</div>
+
+		</div>
+	</div>
 
 {% endblock %}

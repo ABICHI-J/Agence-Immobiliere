@@ -5,28 +5,29 @@
 
 {% block body %}
 
-	<div class="banner-contact">
+	<div class="banner-contact flex-ai-c">
 		<div class="info-banner">
-		
-		<h1 class="titre-contact">Aide & contact</h1>
-		<p>Vous avez une question ou une demande concernant le site internet ?</p>
+			<h1 class="titre-contact ta-s">Aide & contact</h1>
+
+			<p>Vous avez une question ou une demande concernant le site internet ?</p>
 		</div>
 	</div>
 
-	{{ form_start(contactForm) }}
+
 	<div class="form-contact">
 		<h2 class="sous-titre-contact">Contacter le service client</h2>
 		<div class="p1">
-			<p class="bold"><img class="icon-main" src="/assets/images/montrer-du-doigt.png" alt="montrer-du-doigt">Vous souhaitez obtenir plus d'informations sur une annonce ou demander une visite ?</p>
+			<p class="bold"><img class="icon-hand" src="/assets/images/montrer-du-doigt.png" alt="montrer-du-doigt">Vous souhaitez obtenir plus d'informations sur une annonce ou demander une visite ?</p>
 			<p>Contactez l'agence ou le propriétaire via les coordonnées affcihées sur les pages annonces</p>
 		</div>
 		<div class="p2">
-			<p class="bold"><img class="icon-main" src="/assets/images/ecrire.png" alt="ecrire">Pour toute autre demande concernant le site internet</p>
+			<p class="bold"><img class="icon-hand" src="/assets/images/ecrire.png" alt="ecrire">Pour toute autre demande concernant le site internet</p>
 			<p>Utilisez le formulaire de contact suivant :</p>
 		</div>
-		<div class="champs-contact">
+		{{ form_start(contactForm) }}
+		<div class="flex-jc-sb">
 			<div class="champs-left">
-				<div class="camp champs-prenom-nom">
+				<div class="flex-jc-sb">
 					<div class="prenom-contact">
 						{{ form_row(contactForm.firstname) }}
 					</div>
@@ -34,10 +35,10 @@
 						{{ form_row(contactForm.lastname) }}
 					</div>
 				</div>
-				<div class="camp">
+				<div class="">
 					{{ form_row(contactForm.email) }}
 				</div>
-				<div class="camp">
+				<div class="">
 					{{ form_row(contactForm.subject) }}
 				</div>
 			</div>
@@ -49,8 +50,10 @@
 
 
 		<button type="submit" class="btn-contact">Envoyer mon message</button>
-		<p>( * ) Champs obligatoires.</p>
 		{{ form_end(contactForm) }}
+
+		<p>( * ) Champs obligatoires.</p>
+
 	</div>
 
 

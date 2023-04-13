@@ -6,12 +6,13 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 	<style>
 		#mapid {
-			height: 50%;
-			width: 40%;
-			position: absolute;
-			top: 60%;
+			height: 84vh;
+			width: 62%;
+			position: fixed;
+			top: 0px;
+			margin-top: 16vh;
 			right: 0;
-			z-index:0;
+			z-index:2;
 		}
 		.container {
 			height: 100vh;
@@ -25,13 +26,12 @@
 	</style>
 </head>
 <body>
-	<div class="container">
 		{# <div class="content">
 			<h1>Titre de ma page</h1>
 			<p>Contenu de ma page</p>
 		</div> #}
 		<div id="mapid"></div>
-	</div>
+
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 	<script>
 		const mymap = L.map('mapid').setView([48.856614, 2.3522219], 13);

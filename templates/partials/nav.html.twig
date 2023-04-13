@@ -1,48 +1,56 @@
 <div class="header">
-	<header>
-		<div class="logo-nav">
-			<div class="name-img-logo">
-				<a href="{{ path('app_home') }}">
-					<img id="img-logo" src="/assets/images/maison.png" alt="IMAGE_LOGO">
-					<p id="title">NOM_ENTREPRISE</p>
+	<header class="flex bold">
+		<div class="logo-nav flex-ai-c-jc-sb">
+
+			<div class="flex-ai-c-jc-sb name-logo_depot-annonce">
+				<a href={{ path('app_home') }} class="ta-c name-logo flex-ai-c-jc-sb">
+					<img id="logo-company" src="/assets/images/maison.png" alt="logo-company">
+					<p id="title">name_company</p>
+				</a>
+				<a href={{ path('app_depot-annonce') }} class="ta-c depot-annonce flex-ai-c-jc-sa">
+
+
+					<div class="plus-sign">
+						<div class="plus-sign-line"></div>
+						<div class="plus-sign-line plus-sign-line-vertical"></div>
+					</div>
+					Déposer une annonce
+
+
 				</a>
 			</div>
 			<nav>
-				<ul>
-					<div class="liens-nav">
+				<ul class="flex-jc-sb">
+					<div class="flex">
 						<li>
-							<a href="{{ path('app_home') }}">Accueil</a>
+							<a href={{ path('app_rent') }}>Louer</a>
 						</li>
 						<li>
-							<a href="{{ path('app_rent') }}">Louer</a>
+							<a href={{ path('app_purchase') }}>Acheter</a>
 						</li>
-						<li>
-							<a href="{{ path('app_purchase') }}">Acheter</a>
-						</li>
-						{% if app.user is not null and app.user.roles[0] == "ROLE_ADMIN" %}
+						{% if app.user.roles is defined and "ROLE_ADMIN" in app.user.roles %}
+
 							<li>
-								<a href="{{ path('app_annonces_crud_index') }}">Gérér les annonces</a>
+								<a href={{ path('admin') }}>Admin</a>
 							</li>
-							<li>
-								<a href="{{ path('app_annonces_crud_new') }}">Ajouter un annonce</a>
-							</li>
+
 						{% endif %}
 					</div>
 
 
 					{% if app.user is null %}
-						<div class="liens-log-nav">
+						<div class="flex">
 							<li>
-								<a href="{{ path('app_register') }}">Créer une compte</a>
+								<a href={{ path('app_register') }}>Créer une compte</a>
 							</li>
 							<li>
-								<a href="{{ path('app_login') }}">Se connecter</a>
+								<a href={{ path('app_login') }}>Se connecter</a>
 							</li>
 						</div>
 					{% endif %}
 
 					{% if app.user is not null %}
-						<div class="liens-log-nav">
+						<div class="flex">
 							<li>
 								{# <img src="#" alt="photo-profil"> #}
 								<a href="{{ path('app_favoris') }}">Mes favoris</a>

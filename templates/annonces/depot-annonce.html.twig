@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces immobilières
+{% endblock %}
+
+{% block body %}
+	<div class="form-annonce">
+		<div class="form-depot-annonce">
+			{{ form_start(annonceForm) }}
+
+			<div class="champs-form">
+				<h3>Quel est le nom de votre agence ?</h3>
+				{{ form_row(annonceForm.agency) }}
+			</div>
+
+			<div class="champs-form">
+
+				<h3>Quel type de bien souhaitez-vous louer ?</h3>
+				{{ form_row(annonceForm.type) }}</div>
+
+
+			<div class="champs-form">
+
+				<h3>Quelle est la surface de votre bien ?</h3>
+				{{ form_row(annonceForm.surface) }}
+			</div>
+
+			<div class="champs-form">
+
+				<h3>Combien y a-t-il de pièces et de chambres ?</h3>
+				{{ form_row(annonceForm.rooms) }}
+
+				{{ form_row(annonceForm.bedrooms) }}
+			</div>
+
+			<div class="champs-form">
+
+				<h3>Votre bien est-il meublé ?</h3>
+
+				{{ form_row(annonceForm.furnished) }}</div>
+
+			<div class="champs-form">
+
+				<h3>Votre logement se situe à quelle étage ?</h3>
+				{{ form_row(annonceForm.floor) }}</div>
+
+			<div class="champs-form">
+
+				<h3>Quels sont les avantages du bien à mettre en avant ?</h3>
+				{{ form_row(annonceForm.balcony) }}
+				{{ form_row(annonceForm.patio) }}
+			</div>
+
+			<div class="champs-form">
+
+				<h3>Y a-t-il un ascenseur dans l’immeuble ?</h3>
+				{{ form_row(annonceForm.lift) }}</div>
+
+			<div class="champs-form">
+
+				<h3>À combien voulez vous louer votre bien ?</h3>
+				{{ form_row(annonceForm.price) }}
+			</div>
+
+			<div class="champs-form">
+
+				<h3>À combien s’élève la garantie ?</h3>
+				{{ form_row(annonceForm.guarantee) }}
+			</div>
+
+			<div class="champs-form champ-description">
+
+				<h3>Comment décrivez-vous votre bien ?</h3>
+				<p>Évitez de répéter des informations déjà précisées et ne pas oublier de parler des atouts du bien, de l'ambiance du quartier, des commerces aux alentours et des transports en commun</p>
+
+				{{ form_widget(annonceForm.description) }}</div>
+
+			<div class="champs-form">
+
+				<h3>Avez-vous quelques photos ?</h3>
+				{{ form_row(annonceForm.image) }}</div>
+
+			<div class="champs-form">
+
+				<h3>Quelle est l’adresse de votre bien ?</h3>
+				{{ form_row(annonceForm.address) }}</div>
+
+			<div class="champs-form coordonees">
+
+				<h3>Pouvez-vous renseigner ou vérifier vos coordonnées ?</h3>
+				<p>
+					<span class="bold">{{ app.user.email }}</span>
+					est l’email dont nous disposons et avec lequel vous recevrez les demandes de locataires intéressés par votre bien. Les informations suivantes serviront à la publication de votre annonce et permettront de vous contacter :</p>
+
+
+				{{ form_row(annonceForm.nickname) }}
+				{{ form_row(annonceForm.phone) }}
+				<p>Si vous souhaitez être contacté par téléphone, renseignez votre numéro.</p>
+			</div>
+
+
+			<button type="submit" class="btn-depot-annonce">Valider mon annonce</button>
+
+			{{ form_end(annonceForm) }}
+		</div>
+	</div>
+
+{% endblock %}

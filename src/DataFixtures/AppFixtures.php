@@ -14,66 +14,57 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {   $annonces = [];
-        $purchases = [];
-        $contacts = [];
         $users= [];
         $faker = Faker\Factory::create();
         $slugify = new Slugify();
 
         
-        for($i=0; $i<10; $i++){
+        for($i=0; $i<25; $i++){
             $annonce = new Annonces();
             
-            $annonce->setCompany($faker->streetName());
-            $annonce->setImage($faker->imageUrl(360, 360, 'animals', true, 'cats'));
-            $annonce->setType($faker->streetName());
+            $annonce->setAgency($faker->word());
+            $annonce->setType($faker->word());
+            $annonce->setSurface($faker->randomNumber(3, true));            
             $annonce->setRooms($faker->randomNumber(1, true));
             $annonce->setBedrooms($faker->randomNumber(1, true));
+            $annonce->setFurnished($faker->boolean());
             $annonce->setFloor($faker->randomNumber(1, true));
+            $annonce->setBalcony($faker->randomNumber(1, true));
+            $annonce->setPatio($faker->randomNumber(1, true));
+            $annonce->setLift($faker->boolean());
+            $annonce->setPrice($faker->randomNumber(3, true));
+            $annonce->setGuarantee($faker->randomNumber(2, true));
+            $annonce->setDescription($faker->text('300'));
+            $annonce->setImage($faker->imageUrl(360, 360, 'annonces', true));
             $annonce->setAddress($faker->address());
-            $annonce->setSurface($faker->randomNumber(3, false));
-            $annonce->setPrice($faker->randomNumber(4, true));
-            $annonce->setAddress($faker->address());
-            $annonce->setSlug($slugify->slugify($annonce->getCompany()));
+            $annonce->setNickname($faker->word());            
+            $annonce->setPhone($faker->phoneNumber());
+            $annonce->setSlug($slugify->slugify($annonce->getAgency()));
             $annonce->setCreatedAt(new \DateTimeImmutable());
-
-
+            $annonce->setUpdatedAt(new \DateTimeImmutable());
 
             $manager->persist($annonce);
             $annonces[] = $annonce;
 
-               
-            // $contact = new Contact();
-            // $contact->setFirstname($faker->firstName());
-            // $contact->setLastname($faker->lastName());
-            // $contact->setSubject($faker->text(100));
-            // $contact->setEmail($faker->email());
-            // $contact->setMessage($faker->text());
 
 
-            // $manager->persist($contact);
+            $user = new User();
+            $user->setEmail($faker->email());
+            $user->setPassword($faker->password());
+            $user->setFirstname($faker->firstName());
+            $user->setLastName($faker->lastName());
+            $user->setImage($faker->imageUrl(360, 360, 'users', true));
+            $user->setPhone($faker->phoneNumber());
+            $user->setAddress($faker->address());
+            $user->setCity($faker->city());
+            $user->setZipcode($faker->postcode());
+            $user->setCountry($faker->country());
+            $user->setCreatedAt(new \DateTimeImmutable());
+            $user->setUpdatedAt(new \DateTimeImmutable());
 
-            // $contacts[]= $contact; 
+            $manager->persist($user);
 
-
-            // $user = new User();
-            // $user->setFirstname($faker->firstName());
-            // $user->setLastName($faker->lastName());
-            // $user->setEmail($faker->email());
-            // $user->setPassword($faker->password());
-            // $user->setPhone($faker->phoneNumber());
-            // $user->setAddress($faker->address());
-            // $user->setCity($faker->city());
-            // $user->setZipcode($faker->postcode());
-            // $user->setCountry($faker->country());
-            // $user->setImage($faker->imageUrl(360, 360, 'persons', true));
-
-
-            // $user->setCreatedAt(new \DateTimeImmutable());
-
-            // $manager->persist($user);
-
-            // $users[]= $user; 
+            $users[]= $user; 
         }
         
         $manager->flush();

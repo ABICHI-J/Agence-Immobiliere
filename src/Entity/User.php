@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
@@ -27,7 +25,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     #[ORM\Column]
-    private array $roles = [0];
+    private array $roles = [];
 
     /**
      * @var string The hashed password
@@ -55,12 +53,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
         max: 100,
@@ -69,8 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $address = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(
         min: 2,
         max: 20,
@@ -79,8 +77,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $city = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(
         min: 5,
         max: 5,
@@ -92,7 +89,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $zipcode = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
     private ?string $country = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -100,9 +96,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
 
     public function getId(): ?int
     {
@@ -210,6 +203,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
     public function getAddress(): ?string
     {
         return $this->address;
@@ -245,7 +250,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
     public function getCountry(): ?string
     {
         return $this->country;
@@ -281,18 +285,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
     
 }
