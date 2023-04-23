@@ -175,16 +175,15 @@ header .depot-annonce {
   transform: rotate(90deg);
 }
 nav {
-  margin-left: 50px;
-  overflow: hidden;
+  margin: 0px 50px;
+  background-color: #832424;
+  max-width: 65vw;
 }
 nav ul {
-  width: 70vw;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 nav li {
+  background-color: #005580;
   margin: 14px 16px;
 }
 nav li:hover {
@@ -241,7 +240,7 @@ footer {
 .form {
   margin: auto;
   margin-left: 80px;
-  width: 30%;
+  width: 310px;
 }
 .form-register {
   width: 40%;
