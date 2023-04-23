@@ -16,28 +16,26 @@
 
 				<div class="container-filters ta-c fs-24">
 
-					<p>FILTRES...</p>
+					<div class="filter">
+						{{form_start(form)}}
+						{{ form_row(form.prixmin) }}
+						{{ form_row(form.prixmax) }}
+						{{ form_row(form.submit) }}
+						<a class='btn-fiche' href={{path('app_purchase')}}>Voir tout</a>
+						{{form_end(form)}}
+					</div>
+
 				</div>
 
 
 				<div class="body-annonce">
-					<p style="font-size: 1.5rem; margin-bottom: 20px">{{annonces|length}}
+					<p style="font-size: 1.5rem; margin-bottom: 20px">{{allAnnonces|length}}
 						biens en location en Ile-de-France</p>
 
-					<label for="order-select">Trier par</label>
-					<select id="order-select">
-						<option value="selection">Sélection</option>
-						<option value="price-asc">Prix croissant</option>
-						<option value="price-desc">Prix décroissant</option>
-						<option value="surface-asc">Surface croissante</option>
-						<option value="surface-desc">Surface décroissante</option>
-					</select>
 
-					{{ form_start(form) }}
-					{{ form_row(form.prices) }}
-					{{ form_row(form.filter) }}
-					<button type="submit" class="">dgdg</button>
-					{{ form_end(form) }}
+					<div class="filters">
+						{{knp_pagination_sortable(annonces,'Trier par prix','p.price')}}
+					</div>
 
 
 					{% for annonce in annonces %}
@@ -78,6 +76,11 @@
 						</div>
 
 					{% endfor %}
+
+					<div class="pagination">
+						{{knp_pagination_render(annonces)}}
+					</div>
+
 
 					{% include 'partials/map.html.twig' %}
 

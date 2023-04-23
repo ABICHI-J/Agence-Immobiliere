@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Annonces;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\AnnonceSearch;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Annonces>
@@ -16,9 +19,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AnnoncesRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry,PaginatorInterface $paginator)
     {
         parent::__construct($registry, Annonces::class);
+        $this->paginator = $paginator;
     }
 
     public function save(Annonces $entity, bool $flush = false): void
@@ -39,30 +43,54 @@ class AnnoncesRepository extends ServiceEntityRepository
         }
     }
 
-    
 
-//    /**
-//     * @return Annonces[] Returns an array of Annonces objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Annonces
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Annonces[] Returns an array of Annonces objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('a.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Annonces
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+
+    public function findSearch(AnnonceSearch $search): PaginationInterface
+    {
+        $query = $this
+            ->createQueryBuilder('p');
+
+        if (!empty($search->prixmin)) {
+            $query = $query
+                ->andWhere('p.price >= :prixmin')
+                ->setParameter('prixmin', $search->prixmin);
+        }
+
+        if (!empty($search->prixmax)) {
+            $query = $query
+                ->andWhere('p.price <= :prixmax')
+                ->setParameter('prixmax', $search->prixmax);
+        }
+        $query = $query->getQuery();
+        return $this->paginator->paginate(
+            $query,
+            $search->page,
+            9
+        );
+    }
 }

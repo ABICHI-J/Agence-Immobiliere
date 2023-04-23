@@ -27,7 +27,6 @@ class AnnoncesCrudController extends AbstractCrudController
         yield TextField::new('furnished');
         yield TextField::new('floor');
         yield NumberField::new('balcony');
-        yield NumberField::new('patio');
         yield TextField::new('lift');
         yield NumberField::new('price');
         yield NumberField::new('guarantee');
