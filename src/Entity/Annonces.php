@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnnoncesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnnoncesRepository::class)]
@@ -93,12 +95,14 @@ class Annonces
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\OneToMany(mappedBy: 'Annonces', targetEntity: Favorites::class)]
+    private Collection $favorites;
+
    
-
-
     public function __construct() {
         $this->updatedAt = new \DateTimeImmutable('Europe/Paris');
         $this->createdAt = new \DateTimeImmutable('Europe/Paris');
+        $this->favorites = new ArrayCollection();
 
     }
 
@@ -324,6 +328,36 @@ class Annonces
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Favorites>
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(Favorites $favorite): self
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites->add($favorite);
+            $favorite->setAnnonces($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Favorites $favorite): self
+    {
+        if ($this->favorites->removeElement($favorite)) {
+            // set the owning side to null (unless already changed)
+            if ($favorite->getAnnonces() === $this) {
+                $favorite->setAnnonces(null);
+            }
+        }
 
         return $this;
     }

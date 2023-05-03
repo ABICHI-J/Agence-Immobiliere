@@ -6,89 +6,119 @@
 
 			{% endblock %}
 		</title>
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css"> {% block javascripts %}{% endblock %}
-		</head>
-		<body>
+		<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+	</head>
+	<body>
 
-			{% include 'partials/nav.html.twig' %}
-			{% block body %}
+		{% include 'partials/nav.html.twig' %}
+		{% block body %}
 
 
-				<div class="container-filters ta-c fs-24">
+			<div class="container-filters ta-c fs-24">
 
-					<div class="filter">
-						{{form_start(form)}}
-						{{ form_row(form.prixmin) }}
-						{{ form_row(form.prixmax) }}
-						{{ form_row(form.submit) }}
-						<a class='btn-fiche' href={{path('app_purchase')}}>Voir tout</a>
-						{{form_end(form)}}
-					</div>
+				<div class="filter flex-ai-c-jc-sb">
 
+					{{form_start(form)}}
+					{{ form_row(form.prixmin) }}
+					{{ form_row(form.prixmax) }}
+					{{ form_row(form.submit) }}
+					<a class='btn-see-all' href={{path('app_purchase')}}>Voir tout</a>
+					{{form_end(form)}}
+				</div>
+
+			</div>
+
+
+			<div class="body-annonce">
+				<p style="font-size: 25px; margin-bottom: 20px">
+					<span class="bold">{{allAnnonces|length}}
+						biens</span>
+					en location en Île-de-France</p>
+
+
+				<div class="filters">
+					{{knp_pagination_sortable(annonces,'Trier par prix','p.price')}}
 				</div>
 
 
-				<div class="body-annonce">
-					<p style="font-size: 1.5rem; margin-bottom: 20px">{{allAnnonces|length}}
-						biens en location en Ile-de-France</p>
+				{% for annonce in annonces %}
 
 
-					<div class="filters">
-						{{knp_pagination_sortable(annonces,'Trier par prix','p.price')}}
-					</div>
-
-
-					{% for annonce in annonces %}
-
-						<div class="annonces flex">
-							<div>
-								<h2>{{ annonce.agency }}</h2>
-								<img src="assets/images/{{ annonce.image }}" alt="Image annonce"/>
-							</div>
-							<div class="details">
+					<div class="annonces flex">
+						<div>
+							<h2>{{ annonce.agency }}</h2>
+							<img src="assets/images/{{ annonce.image }}" alt="Image annonce"/>
+						</div>
+						<div class="details">
+							<div class="flex-jc-sb">
 								<p class="bold fs-24">{{ annonce.price }}
 									€
 								</p>
-								<p class="bold">{{ annonce.type }}</p>
 
-								<p class="bold">{{ annonce.rooms }}
-									pièces •
-									{{ annonce.bedrooms }}
-									chambres •
-									{{ annonce.surface }}
-									m² • Étage
-									{{ annonce.floor }}
-									{% if annonce.balcony %}
-										• Balcon
-									{% endif %}
-									{% if annonce.patio %}
-										• Terrase
-									{% endif %}
-									{% if annonce.lift %}
-										• Ascenseur
-									{% endif %}
-								</p>
+								{% if annonce in app.user.getFavorites() %}
+									<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
 
-								<p>{{ annonce.address }}</p>
-								<a href="{{ path('app_cart', {id: annonce.id}) }}">Voir l'annonce</a>
+
+										<input type="hidden" name="_method" value="DELETE">
+										<button id="favorite-button" type="submit" name="remove_favorite">
+											<img class="favorite-icon filled" src="assets/images/coeur-rempli.png">
+										</button>
+									</form>
+								{% else %}
+									<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
+
+
+										<button type="submit" name="add_favorite">
+											<img class="favorite-icon empty" src="assets/images/coeur-vide.png">
+										</button>
+									</form>
+								{% endif %}
+
+
 							</div>
+							<p class="bold">{{ annonce.type }}</p>
 
+							<p class="bold">{{ annonce.rooms }}
+								pièces •
+								{{ annonce.bedrooms }}
+								chambres •
+								{{ annonce.surface }}
+								m² • Étage
+								{{ annonce.floor }}
+								{% if annonce.balcony %}
+									• Balcon
+								{% endif %}
+								{% if annonce.patio %}
+									• Terrase
+								{% endif %}
+								{% if annonce.lift %}
+									• Ascenseur
+								{% endif %}
+							</p>
+
+							<p>{{ annonce.address }}</p>
+							<a class="btn-voir-annonce" href={{ path('app_cart', {id: annonce.id} ) }}>Voir l'annonce</a>
 						</div>
 
-					{% endfor %}
-
-					<div class="pagination">
-						{{knp_pagination_render(annonces)}}
 					</div>
 
+				{% endfor %}
 
-					{% include 'partials/map.html.twig' %}
-
+				<div class="container-pagination">
+					{{knp_pagination_render(annonces)}}
 				</div>
 
-				<script></script>
 
-			{% endblock %}
+				{% include 'partials/map.html.twig' %}
 
-		</body>
-	</html>
+			</div>
+
+			<script></script>
+
+		{% endblock %}
+		{% block javascripts %}
+			<script src="/assets/js/favorite.js"></script>
+		{% endblock %}
+
+	</body>
+</html></body></html></body></html></body></html>

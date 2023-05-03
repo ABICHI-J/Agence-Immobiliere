@@ -1,13 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonces immobilières{% endblock %}
+{% block title %}Annonces immobilières
+{% endblock %}
 
 {% block body %}
 
-    <div class="container-acc">
-        <p><a href="{{ path('app_account') }}"><img class="icon-fleche" src="/assets/images/fleche-fine-contour-vers-la-gauche.png" alt="icon flèche gauche">Retour</a></p>
-		
-        
+	<div class="container-acc">
+		<p>
+			<a href="{{ path('app_account') }}"><img class="icon-fleche" src="/assets/images/fleche-fine-contour-vers-la-gauche.png" alt="icon flèche gauche">Retour</a>
+		</p>
+
+		{% for favorites in favorites %}
+			{% if favorites is empty %}
+				<p>Aucun annnonce dans vos favorites.</p>
+			{% else %}
+				<div class="annonces favorites flex">
+					<div>
+						<h2>{{ favorites.annonce.agency }}</h2>
+						<img src="../../assets/images/{{ favorites.annonce.image }}" alt="Image annonce"/>
+					</div>
+					<div class="details">
+						<div class="flex-jc-sb">
+							<p class="bold fs-24">{{ favorites.annonce.price }}
+								€
+							</p>
+						</div>
+						<p class="bold">{{ favorites.annonce.type }}</p>
+
+						<p class="bold">{{ favorites.annonce.rooms }}
+							pièces •
+							{{ favorites.annonce.bedrooms }}
+							chambres •
+							{{ favorites.annonce.surface }}
+							m² • Étage
+							{{ favorites.annonce.floor }}
+							{% if favorites.annonce.balcony %}
+								• Balcon
+							{% endif %}
+							{% if favorites.annonce.patio %}
+								• Terrase
+							{% endif %}
+							{% if favorites.annonce.lift %}
+								• Ascenseur
+							{% endif %}
+						</p>
+
+						<p>{{ favorites.annonce.address }}</p>
+						<a class="btn-voir-annonce" href={{ path('app_cart', {id: favorites.annonce.id} ) }}>Voir l'annonce</a>
+					</div>
+
+				</div>
+
+			{% endif %}
+
+
+		{% endfor %}
+
+
 	</div>
 
 {% endblock %}

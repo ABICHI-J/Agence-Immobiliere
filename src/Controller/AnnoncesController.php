@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Annonces;
+use App\Entity\Favorites;
 use App\Form\AnnoncesType;
 use Cocur\Slugify\Slugify;
 use App\Data\AnnonceSearch;
 use App\Services\UploadFile;
 use App\Form\AnnonceSearchType;
+use App\Repository\UserRepository;
 use App\Repository\AnnoncesRepository;
 use Doctrine\ORM\EntityManagerInterface;    
 use Symfony\Component\HttpFoundation\Request;
@@ -22,10 +25,23 @@ class AnnoncesController extends AbstractController
     #[Route('/rent', name: 'app_rent')]
     public function index(Request $request, AnnoncesRepository $annoncesRepository,EntityManagerInterface $entityManager)
     {
-        $annonces = $annoncesRepository->findAll();
-        
+        $allAnnonces = $annoncesRepository->findAll();
+
+        $data = new AnnonceSearch();
+        $data->page = $request->get('page', 1);
+        $form = $this->createForm(AnnonceSearchType::class, $data);
+        $form->handleRequest($request);
+        $annonces = $annoncesRepository->findSearch($data);
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        } else {
+            $page = 1;
+        }
         return $this->render('annonces/rent.html.twig', [
+            'allAnnonces' => $allAnnonces,
+            'form' => $form->createView(),
             'annonces' => $annonces,
+            'page' => $page
         ]);
     }
 
@@ -33,7 +49,6 @@ class AnnoncesController extends AbstractController
     public function purchase(Request $request, AnnoncesRepository $annoncesRepository, EntityManagerInterface $entityManager)
     {
         $allAnnonces = $annoncesRepository->findAll();
-
         $data = new AnnonceSearch();
         $data->page = $request->get('page', 1);
         $form = $this->createForm(AnnonceSearchType::class, $data);
@@ -51,6 +66,7 @@ class AnnoncesController extends AbstractController
             'page' => $page
         ]);
     }
+
 
     #[Route('/depot-annonce', name: 'app_depot-annonce')]
     public function depotAnnonce(Request $request, EntityManagerInterface $entityManager, UploadFile $uploadFile, AnnoncesRepository $annoncesRepository): Response

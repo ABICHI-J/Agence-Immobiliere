@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
+use App\Repository\AnnoncesRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -17,12 +21,12 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/account/favoris', name: 'app_favoris')]
-    public function favoris(): Response
-    {
-        
+    #[Route('/account/favorites', name: 'app_favorites')]
+    public function favorites(UserInterface $user, UserRepository $userRepository): Response
+    {   
+        $favorites = $user->getFavorites();
         return $this->render('account/favoris.html.twig', [
-            'controller_name' => 'AccountController',
+            'favorites' => $favorites,
         ]);
     }
 

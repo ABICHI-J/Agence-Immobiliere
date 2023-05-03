@@ -9,10 +9,11 @@
 	<div class="img-home"></div>
 	<main>
 		<div class="annonces-block">
-			<h2>Nos dernières annonces</h2>
-			<div class="annonces-list flex-jc-sb">
+<h2 class="h2-index">Nos dernières annonces</h2>
+
+			<div class="last-annonces flex-jc-sb">
 				{% for annonce in annonces|slice(0, 3) %}
-					<div class="annonces-home ">
+					<div class="annonces-home">
 						<div>
 							<h2>{{ annonce.agency }}</h2>
 							<img src="assets/images/{{ annonce.image }}" alt="Image annonce"/>
@@ -39,25 +40,29 @@
 
 				{% endfor %}
 			</div>
-			<h2>Nos Actualités<h2>
-					<div class="flex-jc-sb">
+			<h2 class="h2-index">Les actualités de l’immobilier
+				<h2>
+					<div class="flex-jc-sb actu-list">
 						<div class="promo-banner">
-							<img src="/assets/images/actu.jpg" alt="Actu banner 1">
-							<h3>Actu 1</h3>
-							<p>Description de l'actu 1</p>
+							<img src="/assets/images/actu1.jpg" alt="Actu banner 1">
+							<h3>Les prix de l'immobilier continuent de grimper en France</h3>
+
 							<a href="#">En savoir plus</a>
 						</div>
 
 						<div class="promo-banner">
 							<img src="/assets/images/actu2.jpg" alt="Actu banner 2">
-							<h3>Actu 2</h3>
-							<p>Description de l'actu 2</p>
+							<h3>Les villes moyennes attirent les investisseurs immobiliers</h3>
+
+
 							<a href="#">En savoir plus</a>
 						</div>
 						<div class="promo-banner">
 							<img src="/assets/images/actu3.jpg" alt="Promo banner 3">
-							<h3>Actu 3</h3>
-							<p>Description de l'actu' 3</p>
+							<h3>
+								Le marché immobilier de luxe reste stable malgré la pandémie</h3>
+
+
 							<a href="#">En savoir plus</a>
 						</div>
 					</div>

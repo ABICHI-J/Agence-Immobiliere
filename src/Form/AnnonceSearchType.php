@@ -17,17 +17,25 @@ class AnnonceSearchType extends AbstractType
     {
         $builder
             ->add('prixmin', NumberType::class, [
-                'label' => false, 
-                'required' => false, 
-                'attr' => ['placeholder' => 'Min price']
-                ])
+                'label' => false,
+                'required' => false,
+                'attr' => ['placeholder' => 'Min price',
+                'class' => 'box-filtre min'
+            ]  
+            ])
             ->add('prixmax', NumberType::class, [
-                'label' => false, 
-                'required' => false, 
-                'attr' => ['placeholder' => 'Max price']
-                ])
+                'label' => false,
+                'required' => false,
+                'attr' => ['placeholder' => 'Max price',
+                'class' => 'box-filtre max'
+            ],
+            ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Search']);
+                'label' => 'Appliquer',
+                'attr' => [
+                    'class' => 'submit-filtre',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
