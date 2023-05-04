@@ -546,7 +546,12 @@ width: 250px;
 .annonces-home p {
   line-height: 25px;
 }
-#favorite-button img{
+.favorite-button {
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+}
+.favorite-button img{
   width: 30px;
   height: 30px;
 }

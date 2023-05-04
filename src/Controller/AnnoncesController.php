@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,8 +47,10 @@ class AnnoncesController extends AbstractController
     }
 
     #[Route('/purchase', name: 'app_purchase')]
-    public function purchase(Request $request, AnnoncesRepository $annoncesRepository, EntityManagerInterface $entityManager)
+    public function purchase(Request $request, AnnoncesRepository $annoncesRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
     {
+        $favorites = $user->getFavorites();
+
         $allAnnonces = $annoncesRepository->findAll();
         $data = new AnnonceSearch();
         $data->page = $request->get('page', 1);
@@ -63,7 +66,8 @@ class AnnoncesController extends AbstractController
             'allAnnonces' => $allAnnonces,
             'form' => $form->createView(),
             'annonces' => $annonces,
-            'page' => $page
+            'page' => $page,
+            'favorites' => $favorites,
         ]);
     }
 

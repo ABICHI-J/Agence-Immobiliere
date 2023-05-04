@@ -40,9 +40,9 @@
 					{{knp_pagination_sortable(annonces,'Trier par prix','p.price')}}
 				</div>
 
-
 				{% for annonce in annonces %}
 
+{% for favorites in favorites %}
 
 					<div class="annonces flex">
 						<div>
@@ -54,21 +54,19 @@
 								<p class="bold fs-24">{{ annonce.price }}
 									€
 								</p>
+								{# {{dump(annonce.id)}}
+								{{dump(favorites.annonce.id)}} #}
 
-								{% if annonce in app.user.getFavorites() %}
-									<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
-
-
+								{% if favorites.annonce.id == annonce.id %}
+									<form  action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
 										<input type="hidden" name="_method" value="DELETE">
-										<button id="favorite-button" type="submit" name="remove_favorite">
+										<button class="favorite-button" type="submit" name="remove_favorite">
 											<img class="favorite-icon filled" src="assets/images/coeur-rempli.png">
 										</button>
 									</form>
 								{% else %}
-									<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
-
-
-										<button type="submit" name="add_favorite">
+									<form  action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
+										<button class="favorite-button" type="submit" name="add_favorite">
 											<img class="favorite-icon empty" src="assets/images/coeur-vide.png">
 										</button>
 									</form>
@@ -102,6 +100,7 @@
 
 					</div>
 
+				{% endfor %}
 				{% endfor %}
 
 				<div class="container-pagination">
