@@ -54,26 +54,30 @@
 								<p class="bold fs-24">{{ annonce.price }}
 									€
 								</p>
+								{% if app.user is empty %}
+								
+									{% else %}
 
-								{% if annonce in app.user.getFavorites() %}
-									<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
-
-
-										<input type="hidden" name="_method" value="DELETE">
-										<button id="favorite-button" type="submit" name="remove_favorite">
-											<img class="favorite-icon filled" src="assets/images/coeur-rempli.png">
-										</button>
-									</form>
-								{% else %}
-									<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
+										{% if annonce in app.user.getFavorites() %}
+											<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
 
 
-										<button type="submit" name="add_favorite">
-											<img class="favorite-icon empty" src="assets/images/coeur-vide.png">
-										</button>
-									</form>
+												<input type="hidden" name="_method" value="DELETE">
+												<button id="favorite-button" type="submit" name="remove_favorite">
+													<img class="favorite-icon filled" src="assets/images/coeur-rempli.png">
+												</button>
+											</form>
+										{% else %}
+											<form id="favorite-button" action="{{ path('app_manage_favorites', {'id': annonce.id, 'page': app.request.get('page', 1)}) }}" method="POST" style="display: inline">
+
+
+												<button type="submit" name="add_favorite">
+													<img class="favorite-icon empty" src="assets/images/coeur-vide.png">
+												</button>
+											</form>
+										{% endif %}
+
 								{% endif %}
-
 
 							</div>
 							<p class="bold">{{ annonce.type }}</p>
@@ -119,6 +123,5 @@
 		{% block javascripts %}
 			<script src="/assets/js/favorite.js"></script>
 		{% endblock %}
-
 	</body>
-</html></body></html></body></html></body></html>
+</html></body></html></body></html></body></html></body></html>
