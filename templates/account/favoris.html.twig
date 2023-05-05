@@ -11,9 +11,11 @@
 		</p>
 
 		{% for favorites in favorites %}
+		
 			{% if favorites is empty %}
 				<p>Aucun annnonce dans vos favorites.</p>
 			{% else %}
+			{{dump(favorites.annonce.id)}}
 				<div class="annonces favorites flex">
 					<div>
 						<h2>{{ favorites.annonce.agency }}</h2>

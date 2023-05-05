@@ -12,10 +12,12 @@ use App\Services\UploadFile;
 use App\Form\AnnonceSearchType;
 use App\Repository\UserRepository;
 use App\Repository\AnnoncesRepository;
-use Doctrine\ORM\EntityManagerInterface;    
+use App\Repository\FavoritesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +25,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AnnoncesController extends AbstractController
 {
     #[Route('/rent', name: 'app_rent')]
-    public function index(Request $request, AnnoncesRepository $annoncesRepository,EntityManagerInterface $entityManager)
+    public function index(Request $request, AnnoncesRepository $annoncesRepository, EntityManagerInterface $entityManager)
     {
         $allAnnonces = $annoncesRepository->findAll();
 
@@ -46,8 +48,17 @@ class AnnoncesController extends AbstractController
     }
 
     #[Route('/purchase', name: 'app_purchase')]
-    public function purchase(Request $request, AnnoncesRepository $annoncesRepository, EntityManagerInterface $entityManager)
+    public function purchase(Request $request, AnnoncesRepository $annoncesRepository, FavoritesRepository $favoriteRepository): Response
     {
+        // Get the current user
+        $user = $this->getUser();
+        // Redirect the user to the login page if they are not logged in
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $favorites = $favoriteRepository->findBy(['user' => $this->getUser()]);
+
         $allAnnonces = $annoncesRepository->findAll();
         $data = new AnnonceSearch();
         $data->page = $request->get('page', 1);
@@ -63,7 +74,8 @@ class AnnoncesController extends AbstractController
             'allAnnonces' => $allAnnonces,
             'form' => $form->createView(),
             'annonces' => $annonces,
-            'page' => $page
+            'page' => $page,
+            'favorites' => $favorites,
         ]);
     }
 
@@ -75,7 +87,7 @@ class AnnoncesController extends AbstractController
         $annonces = new Annonces();
         // Création du formulaire
         $form = $this->createForm(AnnoncesType::class, $annonces);
-        
+
         // Traitement de la soumission du formulaire
         $form->handleRequest($request);
 
@@ -104,7 +116,7 @@ class AnnoncesController extends AbstractController
 
             return $this->redirectToRoute('app_home');
         }
-        
+
         return $this->render('annonces/depot-annonce.html.twig', [
             'annonceForm' => $form->createView(),
         ]);
@@ -116,4 +128,3 @@ class AnnoncesController extends AbstractController
         return $slugify->slugify($text);
     }
 }
-?>
